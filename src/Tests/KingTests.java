@@ -101,4 +101,31 @@ public class KingTests {
         Assertions.assertEquals(king, board.getBoard()[3][4]);
         Assertions.assertNull(board.getBoard()[3][5]);
     }
+
+    /**
+     * Check checkmate scenario
+     * @throws Exception
+     */
+    @Test
+    public void KingCheckmate() throws Exception{
+        Board board = new Board(8, 8);
+        Piece king = new King(board, 7, 7, 1);
+        Piece rook = new Rook(board, 7, 5, 2);
+        Piece bishop1 = new Bishop(board, 5, 5, 2);
+        Piece bishop2 = new Bishop(board, 4, 5, 2);
+
+        board.getBoard()[7][7] = king;
+        board.getBoard()[7][5] = rook;
+        board.getBoard()[5][5] = bishop1;
+        board.getBoard()[4][5] = bishop2;
+
+        board.player1Pieces.add(king);
+        board.player2Pieces.add(rook);
+        board.player2Pieces.add(bishop1);
+        board.player2Pieces.add(bishop2);
+
+
+        Assertions.assertTrue(((King) king).checkmate());
+    }
+
 }

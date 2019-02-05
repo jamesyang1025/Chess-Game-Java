@@ -1,10 +1,15 @@
 package Main;
 
+import java.util.Vector;
+
 public class Board {
     private int height;
     private int width;
     private Piece [][] board;
     private int numMove;
+
+    public Vector<Piece> player1Pieces;
+    public Vector<Piece> player2Pieces;
 
     /**
      * Constructs a board
@@ -16,6 +21,25 @@ public class Board {
         this.width = width;
         board = new Piece[height][width];
         numMove = 1;
+        player1Pieces = new Vector<Piece>(width * height);
+        player2Pieces = new Vector<Piece>(width * height);
+
+    }
+
+    /**
+     * Get player1Pieces
+     * @return the vector player1Pieces
+     */
+    public Vector<Piece> getPlayer1Pieces() {
+        return player1Pieces;
+    }
+
+    /**
+     * Get player2Pieces
+     * @return the vector player2Pieces
+     */
+    public Vector<Piece> getPlayer2Pieces() {
+        return player2Pieces;
     }
 
     /**
@@ -121,5 +145,7 @@ public class Board {
         }
 
     }
+
+
 
 }
