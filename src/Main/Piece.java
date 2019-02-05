@@ -1,3 +1,5 @@
+package Main;
+
 public abstract class Piece {
     protected int x;
     protected int y;
@@ -34,7 +36,7 @@ public abstract class Piece {
     }
 
     /**
-     * Check whether the Piece will be blocked horizontally or vertically
+     * Check whether the Main.Piece will be blocked horizontally or vertically
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
      * @return true if blocked, false otherwise
@@ -43,7 +45,7 @@ public abstract class Piece {
 
         if(this.x == destX && this.y != destY){
             //move vertically
-            for(int j = Math.min(this.y, destY); j < Math.max(this.y, destY); j++){
+            for(int j = Math.min(this.y, destY) + 1; j < Math.max(this.y, destY); j++){
                 if(board.getBoard()[destX][j] != null){
                     return true;
                 }
@@ -53,7 +55,7 @@ public abstract class Piece {
 
         if(this.x != destX && this.y == destY){
             //move horizontally
-            for(int i = Math.min(this.x, destX); i < Math.max(this.x, destX); i++){
+            for(int i = Math.min(this.x, destX) + 1; i < Math.max(this.x, destX); i++){
                 if(board.getBoard()[i][destY] != null){
                     return true;
                 }
@@ -64,7 +66,7 @@ public abstract class Piece {
     }
 
     /**
-     * Check whether the Piece will be blocked diagonally
+     * Check whether the Main.Piece will be blocked diagonally
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
      * @return true if blocked, false otherwise
@@ -117,7 +119,7 @@ public abstract class Piece {
      * @return true if the path is blocked, false otherwise
      */
     private boolean iterateBottomLeftToTopRight(int diffX, int minX, int minY) {
-        for (int i = 0; i < diffX; i++) {
+        for (int i = 1; i < diffX; i++) {
             if (board.getBoard()[minX + i][minY - i] != null) {
                 return true;
             }
@@ -133,7 +135,7 @@ public abstract class Piece {
      * @return true if the path is blocked, false otherwise
      */
     private boolean iterateTopLeftToBottomRight(int diffX, int minX, int minY) {
-        for (int i = 0; i < diffX; i++) {
+        for (int i = 1; i < diffX; i++) {
             if (board.getBoard()[minX + i][minY + i] != null) {
                 return true;
             }

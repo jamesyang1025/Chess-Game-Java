@@ -1,7 +1,9 @@
+package Main;
+
 public class Knight extends Piece {
 
     /**
-     * Constructs a Knight piece
+     * Constructs a Main.Knight piece
      * @param board the chessboard
      * @param x the x coordinate
      * @param y the y coordinate
@@ -12,10 +14,10 @@ public class Knight extends Piece {
     }
 
     /**
-     * Check whether the Knight can move or not
+     * Check whether the Main.Knight can move or not
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
-     * @return true if the Knight can move, false otherwise
+     * @return true if the Main.Knight can move, false otherwise
      */
     public boolean canMove(int destX, int destY){
         if(!checkOutOfBound(destX, destY)){

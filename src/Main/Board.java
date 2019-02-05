@@ -1,7 +1,10 @@
+package Main;
+
 public class Board {
     private int height;
     private int width;
     private Piece [][] board;
+    private int numMove;
 
     /**
      * Constructs a board
@@ -12,6 +15,23 @@ public class Board {
         this.height = height;
         this.width = width;
         board = new Piece[height][width];
+        numMove = 1;
+    }
+
+    /**
+     * Get the number of moves
+     * @return the number of move
+     */
+    public int getNumMove() {
+        return numMove;
+    }
+
+    /**
+     * Set the number of moves
+     * @param n
+     */
+    public void setNumMove(int n) {
+        numMove = n;
     }
 
     /**
@@ -40,10 +60,10 @@ public class Board {
 
     /**
      * Check if the piece can move to the destination
-     * @param piece the Piece to move
+     * @param piece the Main.Piece to move
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
-     * @return true if the Piece can move, false otherwise
+     * @return true if the Main.Piece can move, false otherwise
      */
     public boolean canMove(Piece piece, int destX, int destY) {
         if(piece instanceof King){
@@ -87,7 +107,7 @@ public class Board {
 
     /**
      * Move the piece to the destination location
-     * @param piece the Piece to be moved
+     * @param piece the Main.Piece to be moved
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
      */

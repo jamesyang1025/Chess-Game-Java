@@ -1,8 +1,10 @@
+package Main;
+
 public class Game {
     private Board board;
 
     /**
-     * Contructs a Game
+     * Contructs a Main.Game
      */
     public Game(){
         board = new Board(8, 8);

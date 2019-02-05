@@ -1,7 +1,9 @@
+package Main;
+
 public class King extends Piece {
 
     /**
-     * Constructs a King piece
+     * Constructs a Main.King piece
      * @param board the chessboard
      * @param x the x coordinate
      * @param y the y coordinate
@@ -12,10 +14,10 @@ public class King extends Piece {
     }
 
     /**
-     * Check whether the King can move or not
+     * Check whether the Main.King can move or not
      * @param destX the new x coordinate
      * @param destY the new y coordinate
-     * @return true if the King can move, false otherwise
+     * @return true if the Main.King can move, false otherwise
      */
     public boolean canMove(int destX, int destY){
 
