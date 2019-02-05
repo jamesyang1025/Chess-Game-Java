@@ -51,6 +51,10 @@ public class PawnTests {
 
         Assertions.assertEquals(pawn, board.getBoard()[4][5]);
         Assertions.assertNull(board.getBoard()[4][6]);
+
+        board.MovePiece(pawn, 4, 4);
+        Assertions.assertEquals(pawn, board.getBoard()[4][4]);
+        Assertions.assertNull(board.getBoard()[4][5]);
     }
 
     /**

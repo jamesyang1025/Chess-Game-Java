@@ -23,24 +23,22 @@ public class King extends Piece {
 
         if(!checkOutOfBound(destX, destY)){
 
-            if(!checkOccupied(destX, destY)){
+            int diffX = Math.abs(x - destX);
+            int diffY = Math.abs(y - destY);
 
-                return true;
+            if(diffX <= 1 && diffY <= 1) {
 
-            }else if(canCapture(destX, destY)){
+                if (!checkOccupied(destX, destY)) {
 
-                return true;
+                    return true;
 
+                } else if (canCapture(destX, destY)) {
+
+                    return true;
+
+                }
             }
         }
-        return false;
-    }
-
-    /**
-     * Check whether the king is checkmated
-     * @return true if the king is checkmated, false otherwise
-     */
-    public boolean checkmate(){
         return false;
     }
 }

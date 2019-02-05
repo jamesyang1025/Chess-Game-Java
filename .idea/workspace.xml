@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e68fe35f-8095-493d-a8cd-f91afbcef2de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/BishopTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/KingTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/KnightTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/PawnTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/QueenTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/RookTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs242-assignment1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cs242-assignment1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/cs242-assignment1/Main/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cs242-assignment1/Main/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/cs242-assignment1/Main/King.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cs242-assignment1/Main/King.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/cs242-assignment1/Tests/KingTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cs242-assignment1/Tests/KingTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/KingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/KingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/PawnTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/PawnTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,32 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-              <folding>
-                <element signature="e#506#507#0" expanded="true" />
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#618#619#0" expanded="true" />
-                <element signature="e#645#646#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/Piece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="1054">
+              <caret line="119" column="22" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -75,13 +41,56 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main/Piece.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tests/PawnTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="110" column="51" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="51" />
+            <state relative-caret-position="408">
+              <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tests/KingTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main/Knight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main/King.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+              <folding>
+                <element signature="e#1236#1237#0" expanded="true" />
+                <element signature="e#1264#1265#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,6 +128,7 @@
       <find>Rook</find>
       <find>queen</find>
       <find>knight</find>
+      <find>Pawn</find>
     </findStrings>
     <replaceStrings>
       <replace>destination</replace>
@@ -129,6 +139,8 @@
       <replace>knight</replace>
       <replace>Pawn</replace>
       <replace>pawn</replace>
+      <replace>king</replace>
+      <replace>King</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -151,12 +163,14 @@
         <option value="$PROJECT_DIR$/src/Main/Rook.java" />
         <option value="$PROJECT_DIR$/src/Main/Bishop.java" />
         <option value="$PROJECT_DIR$/src/Main/Queen.java" />
-        <option value="$PROJECT_DIR$/src/Main/Piece.java" />
         <option value="$PROJECT_DIR$/src/Tests/QueenTests.java" />
         <option value="$PROJECT_DIR$/src/Tests/KnightTests.java" />
-        <option value="$PROJECT_DIR$/src/Main/Board.java" />
         <option value="$PROJECT_DIR$/src/Main/Pawn.java" />
+        <option value="$PROJECT_DIR$/src/Main/Piece.java" />
+        <option value="$PROJECT_DIR$/src/Main/Board.java" />
         <option value="$PROJECT_DIR$/src/Tests/PawnTests.java" />
+        <option value="$PROJECT_DIR$/src/Main/King.java" />
+        <option value="$PROJECT_DIR$/src/Tests/KingTests.java" />
       </list>
     </option>
   </component>
@@ -210,7 +224,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549368255348" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549370497842" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../HW0-test" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -230,8 +244,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PawnTests">
-    <configuration name="BishopTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.KingTests">
+    <configuration name="KingTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cs242-assignment1" />
       <extension name="coverage">
         <pattern>
@@ -240,7 +254,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.BishopTests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.KingTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -308,11 +322,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.KingTests" />
         <item itemvalue="JUnit.PawnTests" />
-        <item itemvalue="JUnit.KnightTests" />
-        <item itemvalue="JUnit.QueenTests" />
         <item itemvalue="JUnit.RookTests" />
-        <item itemvalue="JUnit.BishopTests" />
+        <item itemvalue="JUnit.QueenTests" />
+        <item itemvalue="JUnit.KnightTests" />
       </list>
     </recent_temporary>
   </component>
@@ -329,44 +343,44 @@
       <workItem from="1549007591988" duration="204000" />
       <workItem from="1549234230675" duration="2437000" />
       <workItem from="1549250859996" duration="10140000" />
-      <workItem from="1549318850156" duration="30057000" />
+      <workItem from="1549318850156" duration="32185000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PawnTests - 2019.02.05 at 05h 52m 39s.xml">
+    <history-entry file="PawnTests - 2019.02.05 at 06h 27m 06s.xml">
       <configuration name="PawnTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 54m 10s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 27m 11s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 55m 30s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 28m 28s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 55m 49s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 29m 06s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 56m 10s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 29m 31s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 56m 24s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 30m 16s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 56m 32s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 31m 10s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 05h 59m 44s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 31m 44s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 06h 02m 38s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 32m 11s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PawnTests - 2019.02.05 at 06h 03m 38s.xml">
-      <configuration name="PawnTests" configurationId="JUnit" />
+    <history-entry file="KingTests - 2019.02.05 at 06h 32m 38s.xml">
+      <configuration name="KingTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42838000" />
+    <option name="totallyTimeSpent" value="44966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="68" y="20" width="1400" height="784" extended-state="0" />
@@ -379,7 +393,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Messages" weight="0.32874617" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32874617" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32874617" />
@@ -438,31 +452,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main/King.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Knight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#93#94#0" expanded="true" />
-            <element signature="e#113#114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/KingTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Rook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -508,26 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/BishopTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -555,6 +524,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="119" column="22" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Pawn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
@@ -566,10 +549,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/King.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+          <folding>
+            <element signature="e#1236#1237#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Knight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/PawnTests.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/KingTests.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="110" column="51" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="51" />
+          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -115,6 +115,9 @@ public class Board {
         if(canMove(piece, destX, destY)){
             board[piece.x][piece.y] = null;
             board[destX][destY] = piece;
+            piece.x = destX;
+            piece.y = destY;
+            numMove++;
         }
 
     }
