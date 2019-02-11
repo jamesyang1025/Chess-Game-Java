@@ -18,7 +18,7 @@ public class King extends Piece {
     }
 
     /**
-     * Check whether the Main.King can move or not
+     * Check whether the King can move or not
      * @param destX the new x coordinate
      * @param destY the new y coordinate
      * @return true if the Main.King can move, false otherwise
@@ -34,17 +34,29 @@ public class King extends Piece {
 
                 if (!checkOccupied(destX, destY)) {
 
-                    if(!isChecked(destX, destY)){
-                        return true;
-                    }
+                    if (SafeThisTurn(destX, destY)) return true;
 
                 } else if (canCapture(destX, destY)) {
 
-                    if(!isChecked(destX, destY)){
-                        return true;
-                    }
+                    if (SafeThisTurn(destX, destY)) return true;
 
                 }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * check if the king is safe this turn
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if safe, false otherwise
+     */
+    private boolean SafeThisTurn(int destX, int destY) {
+        if ((board.getTurns() % 2 == 1 && player == 1) || (board.getTurns() % 2 == 0 && player == 2)) {
+
+            if (!isChecked(destX, destY)) {
+                return true;
             }
         }
         return false;
@@ -88,13 +100,355 @@ public class King extends Piece {
 
 
             //the king is already checked
-            if(!canMove(x-1, y) && !canMove(x-1, y-1) && !canMove(x-1, y+1)
-                && !canMove(x, y-1) && !canMove(x, y+1) && !canMove(x+1, y)
-                && !canMove(x+1, y-1) && !canMove(x+1, y+1)){
-                return true;
+            if (!kingCanMove()){
+                if(friendlyCanSave())
+                    return false;
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * check if the king can move at all
+     * @return true if the king can move, false otherwise
+     */
+    private boolean kingCanMove() {
+        if (!canMove(x - 1, y) && !canMove(x - 1, y - 1) && !canMove(x - 1, y + 1)
+                && !canMove(x, y - 1) && !canMove(x, y + 1) && !canMove(x + 1, y)
+                && !canMove(x + 1, y - 1) && !canMove(x + 1, y + 1)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check if the king is stalemated
+     * @return true if the king is stalemated, false otherwise
+     */
+    public boolean stalemate(){
+        if(!isChecked(x, y)){
+            if (!kingCanMove()){
+                if(friendlyCanMove())
+                    return false;
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * check if the friendly piece can move
+     * @return true if can, false otherwise
+     */
+    public boolean friendlyCanMove(){
+
+        Vector<Piece> friendlyPieces;
+        if(player == 1)
+            friendlyPieces = board.player1Pieces;
+        else
+            friendlyPieces = board.player2Pieces;
+
+        for(int i = 0; i < friendlyPieces.size(); i++){
+            Piece piece = friendlyPieces.elementAt(i);
+
+            if(piece != null){
+
+                //Rook
+                if(piece instanceof Rook){
+                    if(checkParallelCanMove(piece)) return true;
+                }
+
+                //Bishop
+                if(piece instanceof Bishop){
+                    if(checkParallelCanMove(piece)) return true;
+                }
+
+                //Queen
+                if(piece instanceof Queen){
+                    if(checkParallelCanMove(piece)) return true;
+
+                    if(checkDiagonalCanMove(piece)) return true;
+                }
+
+                //Knight
+                if(piece instanceof Knight){
+                    if(piece.canMove(piece.x-2, piece.y-1))  return true;
+
+                    if(piece.canMove(piece.x-1, piece.y-2))  return true;
+
+                    if(piece.canMove(piece.x-2, piece.y+1))  return true;
+
+                    if(piece.canMove(piece.x-1, piece.y+2))  return true;
+
+                    if(piece.canMove(piece.x+2, piece.y-1))  return true;
+
+                    if(piece.canMove(piece.x+1, piece.y-2))  return true;
+
+                    if(piece.canMove(piece.x+2, piece.y+1))  return true;
+
+                    if(piece.canMove(piece.x+1, piece.y+2))  return true;
+                }
+
+                //Pawn
+                if(piece instanceof Pawn){
+                    //player 1
+                    if(piece.canMove(piece.x, piece.y-1))    return true;
+
+                    if(piece.canMove(piece.x-1, piece.y-1))    return true;
+
+                    if(piece.canMove(piece.x+1, piece.y-1))    return true;
+
+                    //player 2
+                    if(piece.canMove(piece.x, piece.y+1))    return true;
+
+                    if(piece.canMove(piece.x-1, piece.y+1))    return true;
+
+                    if(piece.canMove(piece.x+1, piece.y+1))    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * check if the friendly pieces can save the king
+     * @return true if can, false otherwise
+     */
+    public boolean friendlyCanSave(){
+        Vector<Piece> friendlyPieces;
+        if(player == 1)
+            friendlyPieces = board.player1Pieces;
+        else
+            friendlyPieces = board.player2Pieces;
+
+        for(int i = 0; i < friendlyPieces.size(); i++){
+            Piece piece = friendlyPieces.elementAt(i);
+            if(piece != null){
+
+                //Rook
+                if(piece instanceof Rook){
+                    if (checkCanSaveAllParallelMoves(piece)) return true;
+
+                }
+
+                //Bishop
+                if(piece instanceof Bishop){
+
+                    //check diagonal moves
+                    if (checkCanSaveAllDiagonalMoves(piece)) return true;
+                }
+
+                //Queen
+                if(piece instanceof Queen){
+
+                    //check horizontal moves
+                    if (checkCanSaveAllParallelMoves(piece)) return true;
+
+                    //check diagonal moves
+                    if (checkCanSaveAllDiagonalMoves(piece)) return true;
+
+                }
+
+                //Knight
+                if(piece instanceof Knight){
+                    if(canSaveHelper(piece, piece.x-2, piece.y-1))  return true;
+
+                    if(canSaveHelper(piece, piece.x-1, piece.y-2))  return true;
+
+                    if(canSaveHelper(piece, piece.x-2, piece.y+1))  return true;
+
+                    if(canSaveHelper(piece, piece.x-1, piece.y+2))  return true;
+
+                    if(canSaveHelper(piece, piece.x+2, piece.y-1))  return true;
+
+                    if(canSaveHelper(piece, piece.x+1, piece.y-2))  return true;
+
+                    if(canSaveHelper(piece, piece.x+2, piece.y+1))  return true;
+
+                    if(canSaveHelper(piece, piece.x+1, piece.y+2))  return true;
+                }
+
+                //Pawn
+                if(piece instanceof Pawn){
+                    //player 1
+                    if(canSaveHelper(piece, piece.x, piece.y-1))    return true;
+
+                    if(canSaveHelper(piece, piece.x-1, piece.y-1))    return true;
+
+                    if(canSaveHelper(piece, piece.x+1, piece.y-1))    return true;
+
+                    //player 2
+                    if(canSaveHelper(piece, piece.x, piece.y+1))    return true;
+
+                    if(canSaveHelper(piece, piece.x-1, piece.y+1))    return true;
+
+                    if(canSaveHelper(piece, piece.x+1, piece.y+1))    return true;
+                }
+
+
+
+
             }
         }
 
+        return false;
+    }
+
+    /**
+     * check horizontal and vertical moves that can save the king
+     * @param piece the piece to move
+     * @return true if can, false otherwise
+     */
+    private boolean checkCanSaveAllParallelMoves(Piece piece) {
+        //check horizontal moves
+        for (int j = 0; j < board.getWidth(); j++) {
+            if (j != piece.x && canSaveHelper(piece, j, piece.y))
+                return true;
+        }
+
+        //check vertical moves
+        for (int j = 0; j < board.getHeight(); j++) {
+            if (j != piece.y && canSaveHelper(piece, piece.x, j))
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * check if the piece can move horizontally or vertically
+     * @param piece the piece to move
+     * @return true if can, false otherwise
+     */
+    private boolean checkParallelCanMove(Piece piece) {
+        //check horizontal moves
+        for (int j = 0; j < board.getWidth(); j++) {
+            if (j != piece.x && piece.canMove(j, piece.y))
+                return true;
+        }
+
+        //check vertical moves
+        for (int j = 0; j < board.getHeight(); j++) {
+            if (j != piece.y && piece.canMove(piece.x, j))
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * check diagonal moves that can save the king
+     * @param piece the piece to move
+     * @return true if can, false otherwise
+     */
+    private boolean checkCanSaveAllDiagonalMoves(Piece piece) {
+        int j = piece.x;
+        int k = piece.y;
+
+        while (j >= 0 && k >= 0) {
+            if (j != piece.x && canSaveHelper(piece, j, k))
+                return true;
+            j--;
+            k--;
+        }
+        j = piece.x;
+        k = piece.y;
+
+        while (j >= 0 && k <= board.getHeight()) {
+            if (j != piece.x && canSaveHelper(piece, j, k))
+                return true;
+            j--;
+            k++;
+        }
+
+        j = piece.x;
+        k = piece.y;
+
+        while (j <= board.getWidth() && k >= 0) {
+            if (j != piece.x && canSaveHelper(piece, j, k))
+                return true;
+            j++;
+            k--;
+        }
+
+        j = piece.x;
+        k = piece.y;
+
+        while (j <= board.getWidth() && k <= board.getHeight()) {
+            if (j != piece.x && canSaveHelper(piece, j, k))
+                return true;
+            j++;
+            k++;
+        }
+        return false;
+    }
+
+    /**
+     * check if the piece can move diagonally
+     * @param piece the piece to move
+     * @return true if can, false otherwise
+     */
+    private boolean checkDiagonalCanMove(Piece piece){
+        int j = piece.x;
+        int k = piece.y;
+
+        while (j >= 0 && k >= 0) {
+            if (j != piece.x && piece.canMove(j, k))
+                return true;
+            j--;
+            k--;
+        }
+        j = piece.x;
+        k = piece.y;
+
+        while (j >= 0 && k <= board.getHeight()) {
+            if (j != piece.x && piece.canMove(j, k))
+                return true;
+            j--;
+            k++;
+        }
+
+        j = piece.x;
+        k = piece.y;
+
+        while (j <= board.getWidth() && k >= 0) {
+            if (j != piece.x && piece.canMove(j, k))
+                return true;
+            j++;
+            k--;
+        }
+
+        j = piece.x;
+        k = piece.y;
+
+        while (j <= board.getWidth() && k <= board.getHeight()) {
+            if (j != piece.x && piece.canMove(j, k))
+                return true;
+            j++;
+            k++;
+        }
+        return false;
+    }
+
+    /**
+     * Check if the piece can save the king by moving to the destination
+     * @param piece the piece to move
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if the patient can save the king by moving to the destination, false otherwise
+     */
+    private boolean canSaveHelper(Piece piece, int destX, int destY){
+        int prevX = piece.x;
+        int prevY = piece.y;
+        if(board.movePiece(piece, destX, destY)){
+            board.setTurns(board.getTurns()-1);
+            if(kingCanMove()){
+                board.undoMovePiece(piece, prevX, prevY);
+                return true;
+            }
+            board.undoMovePiece(piece, prevX, prevY);
+        }
         return false;
     }
 

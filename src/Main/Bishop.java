@@ -19,7 +19,7 @@ public class Bishop extends Piece{
      * @param destY the destination y coordinate
      * @return true if the Main.Bishop can move, false otherwise
      */
-    public Boolean canMove(int destX, int destY){
+    public boolean canMove(int destX, int destY){
         if(!checkOutOfBound(destX, destY)){
 
             int diffX = Math.abs(x - destX);

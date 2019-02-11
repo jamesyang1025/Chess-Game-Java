@@ -16,7 +16,7 @@ public class PawnTests {
 
         board.getBoard()[2][5] = pawn;
 
-        board.MovePiece(pawn, -1, 8);
+        board.movePiece(pawn, -1, 8);
     }
 
     /**
@@ -30,7 +30,7 @@ public class PawnTests {
 
         board.getBoard()[2][6] = pawn;
 
-        board.MovePiece(pawn, 2, 4);
+        board.movePiece(pawn, 2, 4);
 
         Assertions.assertEquals(pawn, board.getBoard()[2][4]);
         Assertions.assertNull(board.getBoard()[2][6]);
@@ -47,12 +47,12 @@ public class PawnTests {
 
         board.getBoard()[4][6] = pawn;
 
-        board.MovePiece(pawn, 4, 5);
+        board.movePiece(pawn, 4, 5);
 
         Assertions.assertEquals(pawn, board.getBoard()[4][5]);
         Assertions.assertNull(board.getBoard()[4][6]);
 
-        board.MovePiece(pawn, 4, 4);
+        board.movePiece(pawn, 4, 4);
         Assertions.assertEquals(pawn, board.getBoard()[4][4]);
         Assertions.assertNull(board.getBoard()[4][5]);
     }
@@ -70,7 +70,7 @@ public class PawnTests {
         board.getBoard()[4][5] = pawn1;
         board.getBoard()[4][4] = pawn2;
 
-        board.MovePiece(pawn1, 4, 4);
+        board.movePiece(pawn1, 4, 4);
 
         Assertions.assertEquals(pawn1, board.getBoard()[4][5]);
         Assertions.assertEquals(pawn2, board.getBoard()[4][4]);
@@ -88,8 +88,8 @@ public class PawnTests {
 
         board.getBoard()[2][6] = pawn;
 
-        board.MovePiece(pawn, 2, 5);
-        board.MovePiece(pawn, 2, 3);
+        board.movePiece(pawn, 2, 5);
+        board.movePiece(pawn, 2, 3);
 
         Assertions.assertEquals(pawn, board.getBoard()[2][5]);
         Assertions.assertNull(board.getBoard()[2][6]);
@@ -109,7 +109,7 @@ public class PawnTests {
         board.getBoard()[5][5] = pawn1;
         board.getBoard()[4][4] = pawn2;
 
-        board.MovePiece(pawn1, 4, 4);
+        board.movePiece(pawn1, 4, 4);
 
         Assertions.assertEquals(pawn1, board.getBoard()[4][4]);
         Assertions.assertNull(board.getBoard()[5][5]);

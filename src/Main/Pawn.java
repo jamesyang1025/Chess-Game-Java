@@ -72,16 +72,16 @@ public class Pawn extends Piece {
     private boolean canMoveTwo(int destX, int destY){
         int diffY = Math.abs(destY - y);
         if(destX == x && diffY == 2){
-            int num = board.getNumMove();
+            int num = board.getTurns();
             if(num == 1){
                 if(destY < y){
                     if(!checkOccupied(destX, y - 1) && !checkOccupied(destX, destY)){
-                        board.setNumMove(num+1);
+                        board.setTurns(num+1);
                         return true;
                     }
                 }else{
                     if(!checkOccupied(destX, y + 1) && !checkOccupied(destX, destY)){
-                        board.setNumMove(num+1);
+                        board.setTurns(num+1);
                         return true;
                     }
                 }

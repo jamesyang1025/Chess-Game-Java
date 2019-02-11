@@ -6,7 +6,7 @@ public class Board {
     private int height;
     private int width;
     private Piece [][] board;
-    private int numMove;
+    private int turns;
 
     public Vector<Piece> player1Pieces;
     public Vector<Piece> player2Pieces;
@@ -20,7 +20,7 @@ public class Board {
         this.height = height;
         this.width = width;
         board = new Piece[height][width];
-        numMove = 1;
+        turns = 1;
         player1Pieces = new Vector<Piece>(width * height);
         player2Pieces = new Vector<Piece>(width * height);
 
@@ -43,19 +43,19 @@ public class Board {
     }
 
     /**
-     * Get the number of moves
-     * @return the number of move
+     * Get the number of turns
+     * @return the number of turns
      */
-    public int getNumMove() {
-        return numMove;
+    public int getTurns() {
+        return turns;
     }
 
     /**
-     * Set the number of moves
+     * Set the number of turns
      * @param n
      */
-    public void setNumMove(int n) {
-        numMove = n;
+    public void setTurns(int n) {
+        turns = n;
     }
 
     /**
@@ -134,16 +134,31 @@ public class Board {
      * @param piece the Main.Piece to be moved
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
+     * @return true if moved piece successfully, false otherwise
      */
-    public void MovePiece(Piece piece, int destX, int destY) {
+    public boolean movePiece(Piece piece, int destX, int destY) {
         if(canMove(piece, destX, destY)){
             board[piece.x][piece.y] = null;
             board[destX][destY] = piece;
             piece.x = destX;
             piece.y = destY;
-            numMove++;
+            turns++;
+            return true;
         }
+        return false;
+    }
 
+    /**
+     * Undo a move
+     * @param piece the piece to undo move
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     */
+    public void undoMovePiece(Piece piece, int destX, int destY){
+        board[piece.x][piece.y] = null;
+        board[destX][destY] = piece;
+        piece.x = destX;
+        piece.y = destY;
     }
 
 

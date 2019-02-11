@@ -16,7 +16,7 @@ public class QueenTests {
 
         board.getBoard()[3][0] = queen;
 
-        board.MovePiece(queen, -1, 8);
+        board.movePiece(queen, -1, 8);
     }
 
 
@@ -31,7 +31,7 @@ public class QueenTests {
 
         board.getBoard()[3][5] = queen;
 
-        board.MovePiece(queen, 3, 2);
+        board.movePiece(queen, 3, 2);
 
         Assertions.assertEquals(queen, board.getBoard()[3][2]);
         Assertions.assertNull(board.getBoard()[3][5]);
@@ -50,7 +50,7 @@ public class QueenTests {
         board.getBoard()[3][6] = queen1;
         board.getBoard()[3][4] = queen2;
 
-        board.MovePiece(queen1, 3, 0);
+        board.movePiece(queen1, 3, 0);
 
         Assertions.assertEquals(queen1, board.getBoard()[3][6]);
         Assertions.assertEquals(queen2, board.getBoard()[3][4]);
@@ -68,7 +68,7 @@ public class QueenTests {
 
         board.getBoard()[4][4] = queen;
 
-        board.MovePiece(queen, 4, 5);
+        board.movePiece(queen, 4, 5);
 
         Assertions.assertEquals(queen, board.getBoard()[4][5]);
         Assertions.assertNull(board.getBoard()[4][4]);
@@ -87,7 +87,7 @@ public class QueenTests {
         board.getBoard()[7][3] = queen1;
         board.getBoard()[7][4] = queen2;
 
-        board.MovePiece(queen1, 7, 7);
+        board.movePiece(queen1, 7, 7);
 
         Assertions.assertEquals(queen1, board.getBoard()[7][3]);
         Assertions.assertEquals(queen2, board.getBoard()[7][4]);
@@ -105,7 +105,7 @@ public class QueenTests {
 
         board.getBoard()[5][5] = queen;
 
-        board.MovePiece(queen, 0, 5);
+        board.movePiece(queen, 0, 5);
 
         Assertions.assertEquals(queen, board.getBoard()[0][5]);
         Assertions.assertNull(board.getBoard()[5][5]);
@@ -124,7 +124,7 @@ public class QueenTests {
         board.getBoard()[6][2] = queen1;
         board.getBoard()[4][2] = queen2;
 
-        board.MovePiece(queen1, 0, 2);
+        board.movePiece(queen1, 0, 2);
 
         Assertions.assertEquals(queen1, board.getBoard()[6][2]);
         Assertions.assertEquals(queen2, board.getBoard()[4][2]);
@@ -142,7 +142,7 @@ public class QueenTests {
 
         board.getBoard()[2][2] = queen;
 
-        board.MovePiece(queen, 7, 2);
+        board.movePiece(queen, 7, 2);
 
         Assertions.assertEquals(queen, board.getBoard()[7][2]);
         Assertions.assertNull(board.getBoard()[2][2]);
@@ -161,7 +161,7 @@ public class QueenTests {
         board.getBoard()[2][3] = queen1;
         board.getBoard()[5][3] = queen2;
 
-        board.MovePiece(queen1, 7, 3);
+        board.movePiece(queen1, 7, 3);
 
         Assertions.assertEquals(queen1, board.getBoard()[2][3]);
         Assertions.assertEquals(queen2, board.getBoard()[5][3]);
@@ -179,7 +179,7 @@ public class QueenTests {
 
         board.getBoard()[2][7] = queen;
 
-        board.MovePiece(queen, 1, 6);
+        board.movePiece(queen, 1, 6);
 
         Assertions.assertEquals(queen, board.getBoard()[1][6]);
         Assertions.assertNull(board.getBoard()[2][7]);
@@ -199,7 +199,7 @@ public class QueenTests {
         board.getBoard()[2][4] = queen2;
 
 
-        board.MovePiece(queen1, 0, 2);
+        board.movePiece(queen1, 0, 2);
 
         Assertions.assertEquals(queen1, board.getBoard()[5][7]);
         Assertions.assertEquals(queen2, board.getBoard()[2][4]);
@@ -217,7 +217,7 @@ public class QueenTests {
 
         board.getBoard()[2][7] = queen;
 
-        board.MovePiece(queen, 4, 5);
+        board.movePiece(queen, 4, 5);
 
         Assertions.assertEquals(queen, board.getBoard()[4][5]);
         Assertions.assertNull(board.getBoard()[2][7]);
@@ -237,7 +237,7 @@ public class QueenTests {
         board.getBoard()[5][4] = queen2;
 
 
-        board.MovePiece(queen1, 6, 3);
+        board.movePiece(queen1, 6, 3);
 
         Assertions.assertEquals(queen1, board.getBoard()[2][7]);
         Assertions.assertEquals(queen2, board.getBoard()[5][4]);
@@ -255,7 +255,7 @@ public class QueenTests {
 
         board.getBoard()[5][0] = queen;
 
-        board.MovePiece(queen, 2, 3);
+        board.movePiece(queen, 2, 3);
 
         Assertions.assertEquals(queen, board.getBoard()[2][3]);
         Assertions.assertNull(board.getBoard()[5][0]);
@@ -275,7 +275,7 @@ public class QueenTests {
         board.getBoard()[2][3] = queen2;
 
 
-        board.MovePiece(queen1, 0, 5);
+        board.movePiece(queen1, 0, 5);
 
         Assertions.assertEquals(queen1, board.getBoard()[5][0]);
         Assertions.assertEquals(queen2, board.getBoard()[2][3]);
@@ -293,7 +293,7 @@ public class QueenTests {
 
         board.getBoard()[3][0] = queen;
 
-        board.MovePiece(queen, 4, 1);
+        board.movePiece(queen, 4, 1);
 
         Assertions.assertEquals(queen, board.getBoard()[4][1]);
         Assertions.assertNull(board.getBoard()[3][0]);
@@ -313,7 +313,7 @@ public class QueenTests {
         board.getBoard()[3][1] = queen2;
 
 
-        board.MovePiece(queen1, 6, 4);
+        board.movePiece(queen1, 6, 4);
 
         Assertions.assertEquals(queen1, board.getBoard()[2][0]);
         Assertions.assertEquals(queen2, board.getBoard()[3][1]);
@@ -334,7 +334,7 @@ public class QueenTests {
         board.getBoard()[6][4] = rook;
 
 
-        board.MovePiece(queen1, 7, 5);
+        board.movePiece(queen1, 7, 5);
 
         Assertions.assertEquals(queen1, board.getBoard()[2][0]);
         Assertions.assertEquals(rook, board.getBoard()[6][4]);
@@ -355,7 +355,7 @@ public class QueenTests {
         board.getBoard()[7][5] = queen2;
 
 
-        board.MovePiece(queen1, 7, 5);
+        board.movePiece(queen1, 7, 5);
 
         Assertions.assertEquals(queen1, board.getBoard()[7][5]);
         Assertions.assertNull(board.getBoard()[2][0]);

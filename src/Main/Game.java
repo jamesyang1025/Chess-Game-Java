@@ -4,7 +4,7 @@ public class Game {
     private Board board;
 
     /**
-     * Contructs a Main.Game
+     * Constructs a Main.Game
      */
     public Game(){
         board = new Board(8, 8);

@@ -16,7 +16,7 @@ public class RookTests {
         Board board = new Board(8, 8);
         Piece rook = new Rook(board, 1, 5, 1);
         board.getBoard()[1][5] = rook;
-        board.MovePiece(rook, -1, 5);
+        board.movePiece(rook, -1, 5);
     }
 
     /**
@@ -30,7 +30,7 @@ public class RookTests {
 
         board.getBoard()[5][4] = rook;
 
-        board.MovePiece(rook, 5, 2);
+        board.movePiece(rook, 5, 2);
 
         Assertions.assertEquals(rook, board.getBoard()[5][2]);
         Assertions.assertNull(board.getBoard()[5][4]);
@@ -49,7 +49,7 @@ public class RookTests {
         board.getBoard()[6][4] = rook1;
         board.getBoard()[6][2] = rook2;
 
-        board.MovePiece(rook1, 6, 1);
+        board.movePiece(rook1, 6, 1);
 
         Assertions.assertEquals(rook1, board.getBoard()[6][4]);
         Assertions.assertEquals(rook2, board.getBoard()[6][2]);
@@ -67,7 +67,7 @@ public class RookTests {
 
         board.getBoard()[4][4] = rook;
 
-        board.MovePiece(rook, 4, 7);
+        board.movePiece(rook, 4, 7);
 
         Assertions.assertEquals(rook, board.getBoard()[4][7]);
         Assertions.assertNull(board.getBoard()[4][4]);
@@ -86,7 +86,7 @@ public class RookTests {
         board.getBoard()[7][1] = rook1;
         board.getBoard()[7][4] = rook2;
 
-        board.MovePiece(rook1, 7, 7);
+        board.movePiece(rook1, 7, 7);
 
         Assertions.assertEquals(rook1, board.getBoard()[7][1]);
         Assertions.assertEquals(rook2, board.getBoard()[7][4]);
@@ -104,7 +104,7 @@ public class RookTests {
 
         board.getBoard()[5][5] = rook;
 
-        board.MovePiece(rook, 1, 5);
+        board.movePiece(rook, 1, 5);
 
         Assertions.assertEquals(rook, board.getBoard()[1][5]);
         Assertions.assertNull(board.getBoard()[5][5]);
@@ -123,7 +123,7 @@ public class RookTests {
         board.getBoard()[6][2] = rook1;
         board.getBoard()[4][2] = rook2;
 
-        board.MovePiece(rook1, 1, 2);
+        board.movePiece(rook1, 1, 2);
 
         Assertions.assertEquals(rook1, board.getBoard()[6][2]);
         Assertions.assertEquals(rook2, board.getBoard()[4][2]);
@@ -141,7 +141,7 @@ public class RookTests {
 
         board.getBoard()[2][2] = rook;
 
-        board.MovePiece(rook, 4, 2);
+        board.movePiece(rook, 4, 2);
 
         Assertions.assertEquals(rook, board.getBoard()[4][2]);
         Assertions.assertNull(board.getBoard()[2][2]);
@@ -160,7 +160,7 @@ public class RookTests {
         board.getBoard()[2][3] = rook1;
         board.getBoard()[6][3] = rook2;
 
-        board.MovePiece(rook1, 7, 3);
+        board.movePiece(rook1, 7, 3);
 
         Assertions.assertEquals(rook1, board.getBoard()[2][3]);
         Assertions.assertEquals(rook2, board.getBoard()[6][3]);
@@ -180,7 +180,7 @@ public class RookTests {
         board.getBoard()[4][3] = rook1;
         board.getBoard()[4][6] = rook2;
 
-        board.MovePiece(rook1, 4, 6);
+        board.movePiece(rook1, 4, 6);
 
         Assertions.assertEquals(rook1, board.getBoard()[4][3]);
         Assertions.assertEquals(rook2, board.getBoard()[4][6]);
@@ -199,7 +199,7 @@ public class RookTests {
         board.getBoard()[3][3] = rook1;
         board.getBoard()[6][3] = rook2;
 
-        board.MovePiece(rook1, 6, 3);
+        board.movePiece(rook1, 6, 3);
 
         Assertions.assertEquals(rook1, board.getBoard()[6][3]);
         Assertions.assertNull(board.getBoard()[3][3]);

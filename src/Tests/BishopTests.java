@@ -19,7 +19,7 @@ public class BishopTests {
 
         board.getBoard()[0][2] = bishop;
 
-        board.MovePiece(bishop, 2, 8);
+        board.movePiece(bishop, 2, 8);
 
     }
 
@@ -34,7 +34,7 @@ public class BishopTests {
 
         board.getBoard()[2][7] = bishop;
 
-        board.MovePiece(bishop, 1, 6);
+        board.movePiece(bishop, 1, 6);
 
         Assertions.assertEquals(bishop, board.getBoard()[1][6]);
         Assertions.assertNull(board.getBoard()[2][7]);
@@ -54,7 +54,7 @@ public class BishopTests {
         board.getBoard()[3][5] = bishop2;
 
 
-        board.MovePiece(bishop1, 0, 2);
+        board.movePiece(bishop1, 0, 2);
 
         Assertions.assertEquals(bishop1, board.getBoard()[5][7]);
         Assertions.assertEquals(bishop2, board.getBoard()[3][5]);
@@ -72,7 +72,7 @@ public class BishopTests {
 
         board.getBoard()[2][7] = bishop;
 
-        board.MovePiece(bishop, 4, 5);
+        board.movePiece(bishop, 4, 5);
 
         Assertions.assertEquals(bishop, board.getBoard()[4][5]);
         Assertions.assertNull(board.getBoard()[2][7]);
@@ -92,7 +92,7 @@ public class BishopTests {
         board.getBoard()[4][5] = bishop2;
 
 
-        board.MovePiece(bishop1, 6, 3);
+        board.movePiece(bishop1, 6, 3);
 
         Assertions.assertEquals(bishop1, board.getBoard()[2][7]);
         Assertions.assertEquals(bishop2, board.getBoard()[4][5]);
@@ -110,7 +110,7 @@ public class BishopTests {
 
         board.getBoard()[5][0] = bishop;
 
-        board.MovePiece(bishop, 3, 2);
+        board.movePiece(bishop, 3, 2);
 
         Assertions.assertEquals(bishop, board.getBoard()[3][2]);
         Assertions.assertNull(board.getBoard()[5][0]);
@@ -130,7 +130,7 @@ public class BishopTests {
         board.getBoard()[3][2] = bishop2;
 
 
-        board.MovePiece(bishop1, 2, 3);
+        board.movePiece(bishop1, 2, 3);
 
         Assertions.assertEquals(bishop1, board.getBoard()[5][0]);
         Assertions.assertEquals(bishop2, board.getBoard()[3][2]);
@@ -148,7 +148,7 @@ public class BishopTests {
 
         board.getBoard()[2][0] = bishop;
 
-        board.MovePiece(bishop, 3, 1);
+        board.movePiece(bishop, 3, 1);
 
         Assertions.assertEquals(bishop, board.getBoard()[3][1]);
         Assertions.assertNull(board.getBoard()[2][0]);
@@ -168,7 +168,7 @@ public class BishopTests {
         board.getBoard()[3][1] = bishop2;
 
 
-        board.MovePiece(bishop1, 5, 3);
+        board.movePiece(bishop1, 5, 3);
 
         Assertions.assertEquals(bishop1, board.getBoard()[2][0]);
         Assertions.assertEquals(bishop2, board.getBoard()[3][1]);
@@ -189,7 +189,7 @@ public class BishopTests {
         board.getBoard()[5][3] = bishop2;
 
 
-        board.MovePiece(bishop1, 5, 3);
+        board.movePiece(bishop1, 5, 3);
 
         Assertions.assertEquals(bishop1, board.getBoard()[2][0]);
         Assertions.assertEquals(bishop2, board.getBoard()[5][3]);
@@ -210,7 +210,7 @@ public class BishopTests {
         board.getBoard()[6][4] = bishop2;
 
 
-        board.MovePiece(bishop1, 6, 4);
+        board.movePiece(bishop1, 6, 4);
 
         Assertions.assertEquals(bishop1, board.getBoard()[6][4]);
         Assertions.assertNull(board.getBoard()[2][0]);

@@ -16,7 +16,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, -1, 8);
+        board.movePiece(knight, -1, 8);
     }
 
     /**
@@ -30,7 +30,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 0, 4);
+        board.movePiece(knight, 0, 4);
 
         Assertions.assertEquals(knight, board.getBoard()[0][4]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -47,7 +47,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 1, 3);
+        board.movePiece(knight, 1, 3);
 
         Assertions.assertEquals(knight, board.getBoard()[1][3]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -64,7 +64,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 4, 4);
+        board.movePiece(knight, 4, 4);
 
         Assertions.assertEquals(knight, board.getBoard()[4][4]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -81,7 +81,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 3, 3);
+        board.movePiece(knight, 3, 3);
 
         Assertions.assertEquals(knight, board.getBoard()[3][3]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -98,7 +98,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 0, 6);
+        board.movePiece(knight, 0, 6);
 
         Assertions.assertEquals(knight, board.getBoard()[0][6]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -115,7 +115,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 1, 7);
+        board.movePiece(knight, 1, 7);
 
         Assertions.assertEquals(knight, board.getBoard()[1][7]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -132,7 +132,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 4, 6);
+        board.movePiece(knight, 4, 6);
 
         Assertions.assertEquals(knight, board.getBoard()[4][6]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -149,7 +149,7 @@ public class KnightTests {
 
         board.getBoard()[2][5] = knight;
 
-        board.MovePiece(knight, 3, 7);
+        board.movePiece(knight, 3, 7);
 
         Assertions.assertEquals(knight, board.getBoard()[3][7]);
         Assertions.assertNull(board.getBoard()[2][5]);
@@ -168,7 +168,7 @@ public class KnightTests {
         board.getBoard()[1][7] = knight1;
         board.getBoard()[2][5] = pawn;
 
-        board.MovePiece(knight1, 2, 5);
+        board.movePiece(knight1, 2, 5);
 
         Assertions.assertEquals(knight1, board.getBoard()[1][7]);
         Assertions.assertEquals(pawn, board.getBoard()[2][5]);
@@ -188,7 +188,7 @@ public class KnightTests {
         board.getBoard()[2][3] = knight2;
 
 
-        board.MovePiece(knight1, 2, 3);
+        board.movePiece(knight1, 2, 3);
 
         Assertions.assertEquals(knight1, board.getBoard()[2][3]);
         Assertions.assertNull(board.getBoard()[0][4]);

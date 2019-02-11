@@ -19,6 +19,8 @@ public abstract class Piece {
         this.player = player;
     }
 
+    public abstract boolean canMove(int destX, int destY);
+
     /**
      * Check if the destination if out of the bound
      * @param destX the destination x coordinate
