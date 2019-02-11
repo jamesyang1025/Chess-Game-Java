@@ -5,14 +5,13 @@ import Main.Rook;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-public class RookTests {
+class RookTests {
 
     /**
      * Tests when moving the Rook to an invalid space (off the board)
-     * @throws Exception
      */
     @Test
-    public void RookMoveOutOfBound() throws Exception{
+    void RookMoveOutOfBound() {
         Board board = new Board(8, 8);
         Piece rook = new Rook(board, 1, 5, 1);
         board.getBoard()[1][5] = rook;
@@ -21,10 +20,9 @@ public class RookTests {
 
     /**
      * Tests when moving the Rook up to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void RookMoveUp() throws Exception{
+    void RookMoveUp() {
         Board board = new Board(8, 8);
         Piece rook = new Rook(board, 5, 4, 1);
 
@@ -38,10 +36,9 @@ public class RookTests {
 
     /**
      * Test when moving the Rook up to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void RookMoveUpBlocked() throws Exception{
+    void RookMoveUpBlocked() {
         Board board = new Board(8, 8);
         Piece rook1 = new Rook(board, 6, 4, 1);
         Piece rook2 = new Rook(board, 6, 2, 1);
@@ -58,10 +55,9 @@ public class RookTests {
 
     /**
      * Tests when moving the Rook down to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void RookMoveDown() throws Exception{
+    void RookMoveDown() {
         Board board = new Board(8, 8);
         Piece rook = new Rook(board, 4, 4, 1);
 
@@ -75,10 +71,9 @@ public class RookTests {
 
     /**
      * Test when moving the Rook down to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void RookMoveDownBlocked() throws Exception{
+    void RookMoveDownBlocked() {
         Board board = new Board(8, 8);
         Piece rook1 = new Rook(board, 7, 1, 1);
         Piece rook2 = new Rook(board, 7, 4, 1);
@@ -95,10 +90,9 @@ public class RookTests {
 
     /**
      * Tests when moving the Rook left to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void RookMoveLeft() throws Exception{
+    void RookMoveLeft() {
         Board board = new Board(8, 8);
         Piece rook = new Rook(board, 5, 5, 1);
 
@@ -112,10 +106,9 @@ public class RookTests {
 
     /**
      * Test when moving the Rook left to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void RookMoveLeftBlocked() throws Exception{
+    void RookMoveLeftBlocked() {
         Board board = new Board(8, 8);
         Piece rook1 = new Rook(board, 6, 2, 1);
         Piece rook2 = new Rook(board, 4, 2, 1);
@@ -132,10 +125,9 @@ public class RookTests {
 
     /**
      * Tests when moving the Rook right to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void RookMoveRight() throws Exception{
+    void RookMoveRight() {
         Board board = new Board(8, 8);
         Piece rook = new Rook(board, 2, 2, 1);
 
@@ -149,10 +141,9 @@ public class RookTests {
 
     /**
      * Test when moving the Rook right to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void RookMoveRightBlocked() throws Exception{
+    void RookMoveRightBlocked() {
         Board board = new Board(8, 8);
         Piece rook1 = new Rook(board, 2, 3, 1);
         Piece rook2 = new Rook(board, 6, 3, 1);
@@ -169,10 +160,9 @@ public class RookTests {
 
     /**
      * Tests when moving the Rook to a space already containing one of his/her pieces
-     * @throws Exception
      */
     @Test
-    public void RookMoveToFriendlyOccupied() throws Exception{
+    void RookMoveToFriendlyOccupied() {
         Board board = new Board(8, 8);
         Piece rook1 = new Rook(board, 4, 3, 1);
         Piece rook2 = new Rook(board, 4, 6, 1);
@@ -188,10 +178,9 @@ public class RookTests {
 
     /**
      * Tests when the Rook tries to capture an opponent piece
-     * @throws Exception
      */
     @Test
-    public void RookCapture() throws Exception{
+    void RookCapture() {
         Board board = new Board(8, 8);
         Piece rook1 = new Rook(board, 3, 3, 1);
         Piece rook2 = new Rook(board, 6, 3, 2);

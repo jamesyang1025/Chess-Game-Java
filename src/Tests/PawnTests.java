@@ -3,14 +3,13 @@ import Main.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-public class PawnTests {
+class PawnTests {
 
     /**
      * Tests when moving the Pawn to an invalid space (off the board)
-     * @throws Exception
      */
     @Test
-    public void PawnMoveOutOfBound() throws Exception{
+    void PawnMoveOutOfBound() {
         Board board = new Board(8, 8);
         Piece pawn = new Pawn(board, 6, 6, 1);
 
@@ -21,10 +20,9 @@ public class PawnTests {
 
     /**
      * Tests when moving the pawn forward two squares on the first move
-     * @throws Exception
      */
     @Test
-    public void PawnMoveTwo() throws Exception{
+    void PawnMoveTwo() {
         Board board = new Board(8, 8);
         Piece pawn = new Pawn(board, 2, 6, 1);
 
@@ -38,10 +36,9 @@ public class PawnTests {
 
     /**
      * Tests when moving the pawn forward one square
-     * @throws Exception
      */
     @Test
-    public void PawnMoveForward() throws Exception{
+    void PawnMoveForward() {
         Board board = new Board(8, 8);
         Piece pawn = new Pawn(board, 4, 6, 1);
 
@@ -59,10 +56,9 @@ public class PawnTests {
 
     /**
      * Tests when moving the pawn forward one square fail (one piece blocking)
-     * @throws Exception
      */
     @Test
-    public void PawnMoveForwardFail() throws Exception{
+    void PawnMoveForwardFail() {
         Board board = new Board(8, 8);
         Piece pawn1 = new Pawn(board, 4, 5, 1);
         Piece pawn2 = new Pawn(board, 4, 4, 2);
@@ -79,10 +75,9 @@ public class PawnTests {
 
     /**
      * Tests when moving the pawn forward two squares on the 2nd/3rd/... move
-     * @throws Exception
      */
     @Test
-    public void PawnMoveTwoFail() throws Exception{
+    void PawnMoveTwoFail() {
         Board board = new Board(8, 8);
         Piece pawn = new Pawn(board, 2, 6, 1);
 
@@ -98,10 +93,9 @@ public class PawnTests {
 
     /**
      * Tests whether the Pawn can capture the opponent piece at the destination
-     * @throws Exception
      */
     @Test
-    public void canCapture() throws Exception{
+    void canCapture() {
         Board board = new Board(8, 8);
         Piece pawn1 = new Pawn(board, 5, 5, 1);
         Piece pawn2 = new Pawn(board, 4, 4, 2);

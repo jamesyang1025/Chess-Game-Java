@@ -20,34 +20,11 @@ public class Queen extends Piece {
      * @return true if the Main.Queen can move, false otherwise
      */
     public boolean canMove(int destX, int destY){
-        if(!checkOutOfBound(destX, destY)){
+        if(checkInBound(destX, destY)){
 
-            if((x == destX && y != destY) || (x != destX && y == destY)) {
+            if(checkParallelCanMove(destX, destY))  return true;
 
-                if (!checkParallelBlocked(destX, destY)) {
-                    if (!checkOccupied(destX, destY)) {
-                        return true;
-                    } else if (canCapture(destX, destY)) {
-                        return true;
-                    }
-                }
-
-            }
-
-            int diffX = Math.abs(x - destX);
-            int diffY = Math.abs(y - destY);
-
-            if(diffX != 0 && diffY != 0 && diffX == diffY) {
-
-                if (!checkDiagonalBlocked(destX, destY)) {
-                    if (!checkOccupied(destX, destY)) {
-                        return true;
-                    } else if (canCapture(destX, destY)) {
-                        return true;
-                    }
-
-                }
-            }
+            return checkDiagonalCanMove(destX, destY);
         }
         return false;
     }

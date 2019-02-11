@@ -22,12 +22,12 @@ public class Pawn extends Piece {
      * @return true if the Main.Pawn can move, false otherwise
      */
     public boolean canMove(int destX, int destY){
-        if(!checkOutOfBound(destX, destY)){
+        if(checkInBound(destX, destY)){
             if(player == 1) {
 
                 if(destY < y) {
 
-                    if (pawnCanMove(destX, destY)) return true;
+                    return pawnCanMove(destX, destY);
 
                 }else{
                     return false;
@@ -36,7 +36,7 @@ public class Pawn extends Piece {
             }else{
                 if(destY > y) {
 
-                    if (pawnCanMove(destX, destY)) return true;
+                    return pawnCanMove(destX, destY);
 
                 }else{
                     return false;
@@ -57,10 +57,7 @@ public class Pawn extends Piece {
             return true;
         }
 
-        if (pawnCanCapture(destX, destY)) {
-            return true;
-        }
-        return false;
+        return pawnCanCapture(destX, destY);
     }
 
     /**
@@ -100,21 +97,17 @@ public class Pawn extends Piece {
         int diffY = Math.abs(destY - y);
 
         if(destX == x && diffY == 1){
-            if(!checkOccupied(destX, destY)){
-                return true;
-            }
+            return !checkOccupied(destX, destY);
         }
         return false;
     }
 
-    public boolean pawnCanCapture(int destX, int destY){
+    private boolean pawnCanCapture(int destX, int destY){
         int diffY = Math.abs(destY - y);
         int diffX = Math.abs(destX - x);
         if(diffX == 1 && diffY == 1){
             if(checkOccupied(destX, destY)){
-                if(canCapture(destX, destY)){
-                    return true;
-                }
+                return canCapture(destX, destY);
             }
         }
         return false;

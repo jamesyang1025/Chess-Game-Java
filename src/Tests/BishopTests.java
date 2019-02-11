@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 
-public class BishopTests {
+class BishopTests {
 
     /**
      * Tests when moving the Bishop to an invalid space (off the board)
-     * @throws Exception
      */
     @Test
-    public void BishopMoveOutOfBound() throws Exception{
+    void BishopMoveOutOfBound() {
         Board board = new Board(8, 8);
         Piece bishop = new Bishop(board, 0, 2, 1);
 
@@ -25,10 +24,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a top-left empty space on the board
-     * @throws Exception
      */
     @Test
-    public void BishopMoveTopLeft() throws Exception{
+    void BishopMoveTopLeft() {
         Board board = new Board(8, 8);
         Piece bishop = new Bishop(board, 2, 7, 1);
 
@@ -42,10 +40,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a top-left empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void BishopMoveTopLeftBlocked() throws Exception{
+    void BishopMoveTopLeftBlocked() {
         Board board = new Board(8, 8);
         Piece bishop1 = new Bishop(board, 5, 7, 1);
         Piece bishop2 = new Bishop(board, 3, 5, 1);
@@ -63,10 +60,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a top-right empty space on the board
-     * @throws Exception
      */
     @Test
-    public void BishopMoveTopRight() throws Exception{
+    void BishopMoveTopRight() {
         Board board = new Board(8, 8);
         Piece bishop = new Bishop(board, 2, 7, 1);
 
@@ -80,10 +76,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a top-right empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void BishopMoveTopRightBlocked() throws Exception{
+    void BishopMoveTopRightBlocked() {
         Board board = new Board(8, 8);
         Piece bishop1 = new Bishop(board, 2, 7, 1);
         Piece bishop2 = new Bishop(board, 4, 5, 1);
@@ -101,10 +96,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a bottom-left empty space on the board
-     * @throws Exception
      */
     @Test
-    public void BishopMoveBottomLeft() throws Exception{
+    void BishopMoveBottomLeft() {
         Board board = new Board(8, 8);
         Piece bishop = new Bishop(board, 5, 0, 1);
 
@@ -118,10 +112,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a bottom-left empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void BishopMoveBottomLeftBlocked() throws Exception{
+    void BishopMoveBottomLeftBlocked() {
         Board board = new Board(8, 8);
         Piece bishop1 = new Bishop(board, 5, 0, 1);
         Piece bishop2 = new Bishop(board, 3, 2, 1);
@@ -139,10 +132,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a bottom-right empty space on the board
-     * @throws Exception
      */
     @Test
-    public void BishopMoveBottomRight() throws Exception{
+    void BishopMoveBottomRight() {
         Board board = new Board(8, 8);
         Piece bishop = new Bishop(board, 2, 0, 1);
 
@@ -156,10 +148,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a bottom-left empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void BishopMoveBottomRightBlocked() throws Exception{
+    void BishopMoveBottomRightBlocked() {
         Board board = new Board(8, 8);
         Piece bishop1 = new Bishop(board, 2, 0, 1);
         Piece bishop2 = new Bishop(board, 3, 1, 1);
@@ -177,10 +168,9 @@ public class BishopTests {
 
     /**
      * Tests when moving the Bishop to a space already containing one of his/her pieces
-     * @throws Exception
      */
     @Test
-    public void BishopMoveToFriendlyOccupied() throws Exception{
+    void BishopMoveToFriendlyOccupied() {
         Board board = new Board(8, 8);
         Piece bishop1 = new Bishop(board, 2, 0, 1);
         Piece bishop2 = new Bishop(board, 5, 3, 1);
@@ -198,10 +188,9 @@ public class BishopTests {
 
     /**
      * Tests when the Bishop tries to capture an opponent piece
-     * @throws Exception
      */
     @Test
-    public void BishopCapture() throws Exception{
+    void BishopCapture() {
         Board board = new Board(8, 8);
         Piece bishop1 = new Bishop(board, 2, 0, 1);
         Piece bishop2 = new Bishop(board, 6, 4, 2);

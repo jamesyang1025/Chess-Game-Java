@@ -3,14 +3,13 @@ import Main.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-public class QueenTests {
+class QueenTests {
 
     /**
      * Tests when moving the Queen to an invalid space (off the board)
-     * @throws Exception
      */
     @Test
-    public void QueenMoveOutOfBound() throws Exception{
+    void QueenMoveOutOfBound() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 3, 0, 1);
 
@@ -22,10 +21,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen up to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveUp() throws Exception{
+    void QueenMoveUp() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 3, 5, 1);
 
@@ -39,10 +37,9 @@ public class QueenTests {
 
     /**
      * Test when moving the Queen up to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveUpBlocked() throws Exception{
+    void QueenMoveUpBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 3, 6, 1);
         Piece queen2 = new Queen(board, 3, 4, 2);
@@ -59,10 +56,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen down to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveDown() throws Exception{
+    void QueenMoveDown() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 4, 4, 1);
 
@@ -76,10 +72,9 @@ public class QueenTests {
 
     /**
      * Test when moving the Queen down to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveDownBlocked() throws Exception{
+    void QueenMoveDownBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 7, 3, 1);
         Piece queen2 = new Queen(board, 7, 4, 2);
@@ -96,10 +91,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen left to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveLeft() throws Exception{
+    void QueenMoveLeft() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 5, 5, 1);
 
@@ -113,10 +107,9 @@ public class QueenTests {
 
     /**
      * Test when moving the Queen left to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveLeftBlocked() throws Exception{
+    void QueenMoveLeftBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 6, 2, 1);
         Piece queen2 = new Queen(board, 4, 2, 2);
@@ -133,10 +126,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen right to an empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveRight() throws Exception{
+    void QueenMoveRight() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 2, 2, 1);
 
@@ -150,10 +142,9 @@ public class QueenTests {
 
     /**
      * Test when moving the Queen right to a place where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveRightBlocked() throws Exception{
+    void QueenMoveRightBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 2, 3, 1);
         Piece queen2 = new Queen(board, 5, 3, 2);
@@ -170,10 +161,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a top-left empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveTopLeft() throws Exception{
+    void QueenMoveTopLeft() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 2, 7, 1);
 
@@ -187,10 +177,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a top-left empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveTopLeftBlocked() throws Exception{
+    void QueenMoveTopLeftBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 5, 7, 1);
         Piece queen2 = new Queen(board, 3, 5, 2);
@@ -208,10 +197,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a top-right empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveTopRight() throws Exception{
+    void QueenMoveTopRight() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 2, 7, 1);
 
@@ -225,10 +213,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a top-right empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveTopRightBlocked() throws Exception{
+    void QueenMoveTopRightBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 2, 7, 1);
         Piece queen2 = new Queen(board, 4, 5, 2);
@@ -246,10 +233,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a bottom-left empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveBottomLeft() throws Exception{
+    void QueenMoveBottomLeft() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 5, 0, 1);
 
@@ -263,10 +249,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a bottom-left empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveBottomLeftBlocked() throws Exception{
+    void QueenMoveBottomLeftBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 5, 0, 1);
         Piece queen2 = new Queen(board, 3, 2, 2);
@@ -284,10 +269,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a bottom-right empty space on the board
-     * @throws Exception
      */
     @Test
-    public void QueenMoveBottomRight() throws Exception{
+    void QueenMoveBottomRight() {
         Board board = new Board(8, 8);
         Piece queen = new Queen(board, 3, 0, 1);
 
@@ -301,10 +285,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a bottom-left empty space where the path is blocked
-     * @throws Exception
      */
     @Test
-    public void QueenMoveBottomRightBlocked() throws Exception{
+    void QueenMoveBottomRightBlocked() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 2, 0, 1);
         Piece queen2 = new Queen(board, 3, 1, 2);
@@ -322,10 +305,9 @@ public class QueenTests {
 
     /**
      * Tests when moving the Queen to a space already containing one of his/her pieces
-     * @throws Exception
      */
     @Test
-    public void QueenMoveToFriendlyOccupied() throws Exception{
+    void QueenMoveToFriendlyOccupied() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 2, 0, 1);
         Piece rook = new Rook(board, 5, 3, 1);
@@ -343,10 +325,9 @@ public class QueenTests {
 
     /**
      * Tests when the Queen tries to capture an opponent piece
-     * @throws Exception
      */
     @Test
-    public void QueenCapture() throws Exception{
+    void QueenCapture() {
         Board board = new Board(8, 8);
         Piece queen1 = new Queen(board, 2, 0, 1);
         Piece queen2 = new Queen(board, 6, 4, 2);

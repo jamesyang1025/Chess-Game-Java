@@ -1,18 +1,15 @@
 package Tests;
 import Main.*;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import java.util.function.BinaryOperator;
-
-public class KingTests {
+class KingTests {
 
     /**
      * Tests when moving the King to an invalid space (out of range)
-     * @throws Exception
      */
     @Test
-    public void KingMoveOutOfRange() throws Exception{
+    void KingMoveOutOfRange() {
         Board board = new Board(8, 8);
         Piece king = new King(board, 6, 6, 1);
 
@@ -27,10 +24,9 @@ public class KingTests {
 
     /**
      * Tests all kinds of movement of king
-     * @throws Exception
      */
     @Test
-    public void KingMove() throws Exception{
+    void KingMove() {
         Board board = new Board(8, 8);
         Piece king = new King(board, 4, 4, 1);
         Piece rook1 = new Rook(board, 7, 0, 2);
@@ -110,10 +106,9 @@ public class KingTests {
 
     /**
      * Tests when the King tries to capture opponent's piece
-     * @throws Exception
      */
     @Test
-    public void KingCapture() throws Exception{
+    void KingCapture() {
         Board board = new Board(8, 8);
         Piece king = new King(board, 3, 5, 1);
         Piece pawn = new Pawn(board, 3, 4, 2);
@@ -129,12 +124,11 @@ public class KingTests {
 
     /**
      * Check checkmate scenario
-     * @throws Exception
      */
     @Test
-    public void KingCheckmate() throws Exception{
+    void KingCheckmate() {
         Board board = new Board(8, 8);
-        Piece king = new King(board, 7, 7, 1);
+        King king = new King(board, 7, 7, 1);
         Piece king2 = new King(board, 7, 5, 2);
         Piece bishop1 = new Bishop(board, 5, 5, 2);
         Piece bishop2 = new Bishop(board, 4, 5, 2);
@@ -150,17 +144,16 @@ public class KingTests {
         board.player2Pieces.add(bishop2);
 
 
-        Assertions.assertTrue(((King) king).checkmate());
+        Assertions.assertTrue(king.checkmate());
     }
 
     /**
      * checkmate scenario where a friendly piece can save the king
-     * @throws Exception
      */
     @Test
-    public void KingCheckMateFriendlySave() throws Exception{
+    void KingCheckMateFriendlySave() {
         Board board = new Board(8, 8);
-        Piece king = new King(board, 7, 7, 1);
+        King king = new King(board, 7, 7, 1);
         Piece bishop = new Bishop(board, 3, 6, 1);
         Piece rook1 = new Rook(board, 7, 0, 2);
         Piece rook2 = new Rook(board, 6, 1, 2);
@@ -175,18 +168,17 @@ public class KingTests {
         board.player2Pieces.add(rook1);
         board.player2Pieces.add(rook2);
 
-        Assertions.assertFalse(((King) king).checkmate());
+        Assertions.assertFalse(king.checkmate());
     }
 
     /**
      * Chekc stalemate scenario
-     * @throws Exception
      */
     @Test
-    public void KingStalemate() throws Exception{
+    void KingStalemate() {
         Board board = new Board(8, 8);
         Piece king1 = new King(board, 2, 4, 1);
-        Piece king2 = new King(board, 0, 3, 2);
+        King king2 = new King(board, 0, 3, 2);
         Piece queen = new Queen(board, 2, 2, 1);
 
         board.getBoard()[2][4] = king1;
@@ -197,19 +189,18 @@ public class KingTests {
         board.player2Pieces.add(king2);
         board.player1Pieces.add(queen);
 
-        Assertions.assertTrue(((King) king2).stalemate());
+        Assertions.assertTrue(king2.stalemate());
     }
 
     /**
      * Friendly scenario where a friendly piece can save the king
-     * @throws Exception
      */
     @Test
-    public void KingStalemateFriendlySave() throws Exception{
+    void KingStalemateFriendlySave() {
         Board board = new Board(8, 8);
         Piece king1 = new King(board, 2, 4, 1);
         Piece queen = new Queen(board, 2, 2, 1);
-        Piece king2 = new King(board, 0, 3, 2);
+        King king2 = new King(board, 0, 3, 2);
         Piece rook = new Rook(board, 7, 3, 2);
 
 
@@ -223,7 +214,7 @@ public class KingTests {
         board.player1Pieces.add(queen);
         board.player2Pieces.add(rook);
 
-        Assertions.assertFalse(((King) king2).stalemate());
+        Assertions.assertFalse(king2.stalemate());
     }
 
 

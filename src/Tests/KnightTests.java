@@ -3,14 +3,13 @@ import Main.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-public class KnightTests {
+class KnightTests {
 
     /**
      * Tests when moving the Knight to an invalid space (off the board)
-     * @throws Exception
      */
     @Test
-    public void KnightMoveOutOfBound() throws Exception{
+    void KnightMoveOutOfBound() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -21,10 +20,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight left 2 squares and up 1 square
-     * @throws Exception
      */
     @Test
-    public void KnightMoveLeft2Up1() throws Exception{
+    void KnightMoveLeft2Up1() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -38,10 +36,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight left 1 squares and up 2 squares
-     * @throws Exception
      */
     @Test
-    public void KnightMoveLeft1Up2() throws Exception{
+    void KnightMoveLeft1Up2() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -55,10 +52,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight right 2 squares and up 1 square
-     * @throws Exception
      */
     @Test
-    public void KnightMoveRight2Up1() throws Exception{
+    void KnightMoveRight2Up1() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -72,10 +68,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight right 1 squares and up 2 squares
-     * @throws Exception
      */
     @Test
-    public void KnightMoveRight1Up2() throws Exception{
+    void KnightMoveRight1Up2() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -89,10 +84,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight left 2 squares and down 1 square
-     * @throws Exception
      */
     @Test
-    public void KnightMoveLeft2Down1() throws Exception{
+    void KnightMoveLeft2Down1() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -106,10 +100,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight left 1 square and down 2 squares
-     * @throws Exception
      */
     @Test
-    public void KnightMoveLeft1Down2() throws Exception{
+    void KnightMoveLeft1Down2() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -123,10 +116,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight right 2 squares and down 1 square
-     * @throws Exception
      */
     @Test
-    public void KnightMoveRight2Down1() throws Exception{
+    void KnightMoveRight2Down1() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -140,10 +132,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight right 1 square and down 2 squares
-     * @throws Exception
      */
     @Test
-    public void KnightMoveRight1Down2() throws Exception{
+    void KnightMoveRight1Down2() {
         Board board = new Board(8, 8);
         Piece knight = new Knight(board, 2, 5, 1);
 
@@ -157,10 +148,9 @@ public class KnightTests {
 
     /**
      * Tests when moving the Knight to a space already containing one of his/her pieces
-     * @throws Exception
      */
     @Test
-    public void KnightMoveToFriendlyOccupied() throws Exception{
+    void KnightMoveToFriendlyOccupied() {
         Board board = new Board(8, 8);
         Piece knight1 = new Knight(board, 1, 7, 1);
         Piece pawn = new Pawn(board, 2, 5, 1);
@@ -176,10 +166,9 @@ public class KnightTests {
 
     /**
      * Tests when the Knight tries to capture an opponent piece
-     * @throws Exception
      */
     @Test
-    public void KnightCapture() throws Exception{
+    void KnightCapture() {
         Board board = new Board(8, 8);
         Piece knight1 = new Knight(board, 0, 4, 1);
         Piece knight2 = new Knight(board, 2, 3, 2);

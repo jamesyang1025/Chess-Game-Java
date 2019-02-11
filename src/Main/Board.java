@@ -21,8 +21,8 @@ public class Board {
         this.width = width;
         board = new Piece[height][width];
         turns = 1;
-        player1Pieces = new Vector<Piece>(width * height);
-        player2Pieces = new Vector<Piece>(width * height);
+        player1Pieces = new Vector<>(width * height);
+        player2Pieces = new Vector<>(width * height);
 
     }
 
@@ -30,7 +30,7 @@ public class Board {
      * Get player1Pieces
      * @return the vector player1Pieces
      */
-    public Vector<Piece> getPlayer1Pieces() {
+    Vector<Piece> getPlayer1Pieces() {
         return player1Pieces;
     }
 
@@ -38,7 +38,7 @@ public class Board {
      * Get player2Pieces
      * @return the vector player2Pieces
      */
-    public Vector<Piece> getPlayer2Pieces() {
+    Vector<Piece> getPlayer2Pieces() {
         return player2Pieces;
     }
 
@@ -46,15 +46,15 @@ public class Board {
      * Get the number of turns
      * @return the number of turns
      */
-    public int getTurns() {
+    int getTurns() {
         return turns;
     }
 
     /**
      * Set the number of turns
-     * @param n
+     * @param n the number of turns to set
      */
-    public void setTurns(int n) {
+    void setTurns(int n) {
         turns = n;
     }
 
@@ -70,7 +70,7 @@ public class Board {
      * Get the width of the board
      * @return the width of the board
      */
-    public int getWidth() {
+    int getWidth() {
         return width;
     }
 
@@ -78,7 +78,7 @@ public class Board {
      * Get the height of the board
      * @return the height of the board
      */
-    public int getHeight() {
+    int getHeight() {
         return height;
     }
 
@@ -89,42 +89,40 @@ public class Board {
      * @param destY the destination y coordinate
      * @return true if the Main.Piece can move, false otherwise
      */
-    public boolean canMove(Piece piece, int destX, int destY) {
+    boolean canMove(Piece piece, int destX, int destY) {
         if(piece instanceof King){
-            if(((King) piece).canMove(destX, destY)){
+            if(piece.canMove(destX, destY)){
                 return true;
             }
         }
 
         if(piece instanceof Rook){
-            if(((Rook) piece).canMove(destX, destY)){
+            if(piece.canMove(destX, destY)){
                 return true;
             }
         }
 
         if(piece instanceof Bishop){
-            if(((Bishop) piece).canMove(destX, destY)){
+            if(piece.canMove(destX, destY)){
                 return true;
             }
 
         }
 
         if(piece instanceof Queen){
-            if(((Queen) piece).canMove(destX, destY)){
+            if(piece.canMove(destX, destY)){
                 return true;
             }
         }
 
         if(piece instanceof Knight){
-            if(((Knight) piece).canMove(destX, destY)){
+            if(piece.canMove(destX, destY)){
                 return true;
             }
         }
 
         if(piece instanceof Pawn){
-            if(((Pawn) piece).canMove(destX, destY)){
-                return true;
-            }
+            return piece.canMove(destX, destY);
         }
         return false;
     }
@@ -154,7 +152,7 @@ public class Board {
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
      */
-    public void undoMovePiece(Piece piece, int destX, int destY){
+    void undoMovePiece(Piece piece, int destX, int destY){
         board[piece.x][piece.y] = null;
         board[destX][destY] = piece;
         piece.x = destX;

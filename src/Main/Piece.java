@@ -1,9 +1,9 @@
 package Main;
 
 public abstract class Piece {
-    protected int x;
-    protected int y;
-    protected int player;
+    int x;
+    int y;
+    int player;
     protected Board board;
 
     /**
@@ -27,14 +27,9 @@ public abstract class Piece {
      * @param destY the destination y coordinate
      * @return true if out of bound, false otherwise
      */
-    public boolean checkOutOfBound(int destX, int destY){
+    boolean checkInBound(int destX, int destY){
 
-        if(destX < 0 || destX > board.getWidth() - 1 || destY < 0 || destY > board.getHeight() - 1 ){
-
-            return true;
-
-        }
-        return false;
+        return destX >= 0 && destX <= board.getWidth() - 1 && destY >= 0 && destY <= board.getHeight() - 1;
     }
 
     /**
@@ -43,7 +38,7 @@ public abstract class Piece {
      * @param destY the destination y coordinate
      * @return true if blocked, false otherwise
      */
-    public boolean checkParallelBlocked(int destX, int destY){
+    private boolean checkParallelBlocked(int destX, int destY){
 
         if(this.x == destX && this.y != destY){
             //move vertically
@@ -73,13 +68,13 @@ public abstract class Piece {
      * @param destY the destination y coordinate
      * @return true if blocked, false otherwise
      */
-    public boolean checkDiagonalBlocked(int destX, int destY){
+    private boolean checkDiagonalBlocked(int destX, int destY){
 
         //the absolute difference between x and destX
         int diffX = Math.abs(x - destX);
         int diffY = Math.abs(y - destY);
 
-        if(diffX != 0 && diffY != 0 && diffX == diffY){
+        if(diffX != 0&& diffX == diffY){
 
             //the piece move diagonally
             if(destX < x && destY < y){
@@ -105,7 +100,7 @@ public abstract class Piece {
             if(destX > x && destY > y){
 
                 //destination is at the bottom-right of the piece
-                if (iterateTopLeftToBottomRight(diffX, x, y)) return true;
+                return iterateTopLeftToBottomRight(diffX, x, y);
             }
 
 
@@ -151,14 +146,9 @@ public abstract class Piece {
      * @param destY the destination y coordinate
      * @return true if the destination is occupied, false otherwise
      */
-    public boolean checkOccupied(int destX, int destY){
+    boolean checkOccupied(int destX, int destY){
 
-        if(board.getBoard()[destX][destY] != null){
-
-            return true;
-
-        }
-        return false;
+        return board.getBoard()[destX][destY] != null;
     }
 
     /**
@@ -167,12 +157,47 @@ public abstract class Piece {
      * @param destY the destination y coordinate
      * @return  true if the piece can capture the other piece at the destination, false otherwise
      */
-    public boolean canCapture(int destX, int destY) {
+    boolean canCapture(int destX, int destY) {
 
-        if(board.getBoard()[destX][destY].player != player){
+        return board.getBoard()[destX][destY].player != player;
+    }
 
-            return true;
+    /**
+     * check if the piece can move parallel to the destination
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if can, false otherwise
+     */
+    boolean checkParallelCanMove(int destX, int destY){
+        if((x == destX && y != destY) || (x != destX && y == destY)) {
 
+            if(!checkParallelBlocked(destX, destY)) {
+
+
+                if (!checkOccupied(destX, destY)) {
+
+                    return true;
+
+                } else return canCapture(destX, destY);
+            }
+        }
+        return false;
+    }
+
+    boolean checkDiagonalCanMove(int destX, int destY){
+        int diffX = Math.abs(x - destX);
+        int diffY = Math.abs(y - destY);
+
+        if(diffX != 0&& diffX == diffY) {
+
+            if(!checkDiagonalBlocked(destX, destY)) {
+
+                if (!checkOccupied(destX, destY)) {
+
+                    return true;
+
+                } else return canCapture(destX, destY);
+            }
         }
         return false;
     }

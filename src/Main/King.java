@@ -4,8 +4,6 @@ import java.util.Vector;
 
 public class King extends Piece {
 
-    private boolean checked = false;
-
     /**
      * Constructs a Main.King piece
      * @param board the chessboard
@@ -25,7 +23,7 @@ public class King extends Piece {
      */
     public boolean canMove(int destX, int destY){
 
-        if(!checkOutOfBound(destX, destY)){
+        if(checkInBound(destX, destY)){
 
             int diffX = Math.abs(x - destX);
             int diffY = Math.abs(y - destY);
@@ -34,11 +32,11 @@ public class King extends Piece {
 
                 if (!checkOccupied(destX, destY)) {
 
-                    if (SafeThisTurn(destX, destY)) return true;
+                    return SafeThisTurn(destX, destY);
 
                 } else if (canCapture(destX, destY)) {
 
-                    if (SafeThisTurn(destX, destY)) return true;
+                    return SafeThisTurn(destX, destY);
 
                 }
             }
@@ -55,9 +53,7 @@ public class King extends Piece {
     private boolean SafeThisTurn(int destX, int destY) {
         if ((board.getTurns() % 2 == 1 && player == 1) || (board.getTurns() % 2 == 0 && player == 2)) {
 
-            if (!isChecked(destX, destY)) {
-                return true;
-            }
+            return !isChecked(destX, destY);
         }
         return false;
     }
@@ -68,7 +64,7 @@ public class King extends Piece {
      * @param y the y coordinate of the king
      * @return true if the king is checked, false otherwise
      */
-    public boolean isChecked(int x, int y){
+    private boolean isChecked(int x, int y){
         Vector<Piece> opponentPieces;
         if(player == 1)
             opponentPieces = board.getPlayer2Pieces();
@@ -101,8 +97,7 @@ public class King extends Piece {
 
             //the king is already checked
             if (!kingCanMove()){
-                if(friendlyCanSave())
-                    return false;
+                return !friendlyCanSave();
             }
             return true;
         }
@@ -115,12 +110,9 @@ public class King extends Piece {
      * @return true if the king can move, false otherwise
      */
     private boolean kingCanMove() {
-        if (!canMove(x - 1, y) && !canMove(x - 1, y - 1) && !canMove(x - 1, y + 1)
-                && !canMove(x, y - 1) && !canMove(x, y + 1) && !canMove(x + 1, y)
-                && !canMove(x + 1, y - 1) && !canMove(x + 1, y + 1)) {
-            return false;
-        }
-        return true;
+        return canMove(x - 1, y) || canMove(x - 1, y - 1) || canMove(x - 1, y + 1)
+                || canMove(x, y - 1) || canMove(x, y + 1) || canMove(x + 1, y)
+                || canMove(x + 1, y - 1) || canMove(x + 1, y + 1);
     }
 
     /**
@@ -130,8 +122,7 @@ public class King extends Piece {
     public boolean stalemate(){
         if(!isChecked(x, y)){
             if (!kingCanMove()){
-                if(friendlyCanMove())
-                    return false;
+                return !friendlyCanMove();
             }
             return true;
         }
@@ -143,7 +134,7 @@ public class King extends Piece {
      * check if the friendly piece can move
      * @return true if can, false otherwise
      */
-    public boolean friendlyCanMove(){
+    private boolean friendlyCanMove(){
 
         Vector<Piece> friendlyPieces;
         if(player == 1)
@@ -158,19 +149,19 @@ public class King extends Piece {
 
                 //Rook
                 if(piece instanceof Rook){
-                    if(checkParallelCanMove(piece)) return true;
+                    if(checkAnyParallelCanMove(piece)) return true;
                 }
 
                 //Bishop
                 if(piece instanceof Bishop){
-                    if(checkParallelCanMove(piece)) return true;
+                    if(checkAnyParallelCanMove(piece)) return true;
                 }
 
                 //Queen
                 if(piece instanceof Queen){
-                    if(checkParallelCanMove(piece)) return true;
+                    if(checkAnyParallelCanMove(piece)) return true;
 
-                    if(checkDiagonalCanMove(piece)) return true;
+                    if(checkAnyDiagonalCanMove(piece)) return true;
                 }
 
                 //Knight
@@ -217,7 +208,7 @@ public class King extends Piece {
      * check if the friendly pieces can save the king
      * @return true if can, false otherwise
      */
-    public boolean friendlyCanSave(){
+    private boolean friendlyCanSave(){
         Vector<Piece> friendlyPieces;
         if(player == 1)
             friendlyPieces = board.player1Pieces;
@@ -322,7 +313,7 @@ public class King extends Piece {
      * @param piece the piece to move
      * @return true if can, false otherwise
      */
-    private boolean checkParallelCanMove(Piece piece) {
+    private boolean checkAnyParallelCanMove(Piece piece) {
         //check horizontal moves
         for (int j = 0; j < board.getWidth(); j++) {
             if (j != piece.x && piece.canMove(j, piece.y))
@@ -389,7 +380,7 @@ public class King extends Piece {
      * @param piece the piece to move
      * @return true if can, false otherwise
      */
-    private boolean checkDiagonalCanMove(Piece piece){
+    private boolean checkAnyDiagonalCanMove(Piece piece){
         int j = piece.x;
         int k = piece.y;
 

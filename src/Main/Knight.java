@@ -20,16 +20,14 @@ public class Knight extends Piece {
      * @return true if the Main.Knight can move, false otherwise
      */
     public boolean canMove(int destX, int destY){
-        if(!checkOutOfBound(destX, destY)){
+        if(checkInBound(destX, destY)){
             int diffX = Math.abs(x - destX);
             int diffY = Math.abs(y - destY);
 
             if((diffX == 2 && diffY == 1) || (diffX == 1 && diffY == 2)){
                 if(!checkOccupied(destX, destY)){
                     return true;
-                }else if(canCapture(destX, destY)){
-                    return true;
-                }
+                }else return canCapture(destX, destY);
             }
         }
         return false;

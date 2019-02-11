@@ -21,24 +21,9 @@ public class Rook extends Piece {
      */
     public boolean canMove(int destX, int destY){
 
-        if(!checkOutOfBound(destX, destY)){
+        if(checkInBound(destX, destY)){
 
-            if((x == destX && y != destY) || (x != destX && y == destY)) {
-
-                if(!checkParallelBlocked(destX, destY)) {
-
-
-                    if (!checkOccupied(destX, destY)) {
-
-                        return true;
-
-                    } else if (canCapture(destX, destY)) {
-
-                        return true;
-
-                    }
-                }
-            }
+            return checkParallelCanMove(destX, destY);
         }
         return false;
     }
