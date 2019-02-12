@@ -1,5 +1,8 @@
 package Main;
 
+/**
+ * A Game class that controls the game flow
+ */
 public class Game {
     private Board board;
 

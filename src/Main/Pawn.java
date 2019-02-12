@@ -1,5 +1,8 @@
 package Main;
 
+/**
+ * An inherited class from Piece that describes the Pawn piece
+ */
 public class Pawn extends Piece {
 
 

@@ -2,13 +2,23 @@ package Main;
 
 import java.util.Vector;
 
+/**
+ * A class that represents the chessboard
+ */
 public class Board {
     private int height;
     private int width;
     private Piece [][] board;
     private int turns;
 
+    /**
+     * the vector to store player1's pieces
+     */
     public Vector<Piece> player1Pieces;
+
+    /**
+     * the vector to store player2's pieces
+     */
     public Vector<Piece> player2Pieces;
 
     /**

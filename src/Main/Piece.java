@@ -1,13 +1,21 @@
 package Main;
 
+/**
+ * An abstract Piece class that covers the basics of a general piece
+ */
 public abstract class Piece {
     int x;
     int y;
     int player;
+
+    /**
+     * The chessboard
+     */
     protected Board board;
 
     /**
      * Constructs a general chess piece
+     * @param board the chessboard
      * @param x the x coordinate of the piece
      * @param y the y coordinate of the piece
      * @param player which player does the piece belong to (player1 or player2)
@@ -19,6 +27,12 @@ public abstract class Piece {
         this.player = player;
     }
 
+    /**
+     * An abstract method that check whether the piece can move to the destination
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if can, false otherwise
+     */
     public abstract boolean canMove(int destX, int destY);
 
     /**
@@ -184,6 +198,12 @@ public abstract class Piece {
         return false;
     }
 
+    /**
+     * check if the piece can move diagonally to the destination
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if can, false otherwise
+     */
     boolean checkDiagonalCanMove(int destX, int destY){
         int diffX = Math.abs(x - destX);
         int diffY = Math.abs(y - destY);

@@ -1,5 +1,8 @@
 package Main;
 
+/**
+ * An inherited class from Piece that describes the Queen piece
+ */
 public class Queen extends Piece {
 
     /**

@@ -1,5 +1,8 @@
 package Main;
 
+/**
+ * An inherited class from Piece that describes the Rook piece
+ */
 public class Rook extends Piece {
 
     /**

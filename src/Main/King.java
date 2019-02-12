@@ -2,6 +2,9 @@ package Main;
 
 import java.util.Vector;
 
+/**
+ * An inherited class from Piece that describes the King piece
+ */
 public class King extends Piece {
 
     /**
