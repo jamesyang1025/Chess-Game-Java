@@ -169,21 +169,7 @@ public class King extends Piece {
 
                 //Knight
                 if(piece instanceof Knight){
-                    if(piece.canMove(piece.x-2, piece.y-1))  return true;
-
-                    if(piece.canMove(piece.x-1, piece.y-2))  return true;
-
-                    if(piece.canMove(piece.x-2, piece.y+1))  return true;
-
-                    if(piece.canMove(piece.x-1, piece.y+2))  return true;
-
-                    if(piece.canMove(piece.x+2, piece.y-1))  return true;
-
-                    if(piece.canMove(piece.x+1, piece.y-2))  return true;
-
-                    if(piece.canMove(piece.x+2, piece.y+1))  return true;
-
-                    if(piece.canMove(piece.x+1, piece.y+2))  return true;
+                    if (checkAnyKnightCanMove(piece)) return true;
                 }
 
                 //Pawn
@@ -213,8 +199,40 @@ public class King extends Piece {
 
                     if(piece.canMove(piece.x+2, piece.y+2))  return true;
                 }
+
+                //Empress
+                if(piece instanceof Empress){
+                    if(checkAnyParallelCanMove(piece)) return true;
+
+                    if (checkAnyKnightCanMove(piece)) return true;
+
+                }
             }
         }
+        return false;
+    }
+
+    /**
+     * check if the knight can move
+     * @param piece the piece to move
+     * @return true if can, false otherwise
+     */
+    private boolean checkAnyKnightCanMove(Piece piece) {
+        if (piece.canMove(piece.x - 2, piece.y - 1)) return true;
+
+        if (piece.canMove(piece.x - 1, piece.y - 2)) return true;
+
+        if (piece.canMove(piece.x - 2, piece.y + 1)) return true;
+
+        if (piece.canMove(piece.x - 1, piece.y + 2)) return true;
+
+        if (piece.canMove(piece.x + 2, piece.y - 1)) return true;
+
+        if (piece.canMove(piece.x + 1, piece.y - 2)) return true;
+
+        if (piece.canMove(piece.x + 2, piece.y + 1)) return true;
+
+        if (piece.canMove(piece.x + 1, piece.y + 2)) return true;
         return false;
     }
 
@@ -259,21 +277,7 @@ public class King extends Piece {
 
                 //Knight
                 if(piece instanceof Knight){
-                    if(canSaveHelper(piece, piece.x-2, piece.y-1))  return true;
-
-                    if(canSaveHelper(piece, piece.x-1, piece.y-2))  return true;
-
-                    if(canSaveHelper(piece, piece.x-2, piece.y+1))  return true;
-
-                    if(canSaveHelper(piece, piece.x-1, piece.y+2))  return true;
-
-                    if(canSaveHelper(piece, piece.x+2, piece.y-1))  return true;
-
-                    if(canSaveHelper(piece, piece.x+1, piece.y-2))  return true;
-
-                    if(canSaveHelper(piece, piece.x+2, piece.y+1))  return true;
-
-                    if(canSaveHelper(piece, piece.x+1, piece.y+2))  return true;
+                    if (checkCanSaveAnyKnightMove(piece)) return true;
                 }
 
                 //Pawn
@@ -304,12 +308,42 @@ public class King extends Piece {
                     if(canSaveHelper(piece, piece.x+2, piece.y+2))  return true;
                 }
 
+                //Empress
+                if(piece instanceof Empress){
+                    if (checkCanSaveAllParallelMoves(piece)) return true;
 
+                    if (checkCanSaveAnyKnightMove(piece)) return true;
+
+                }
 
 
             }
         }
 
+        return false;
+    }
+
+    /**
+     * check if the knight can save the king
+     * @param piece the knight to move
+     * @return true if can, false otherwise
+     */
+    private boolean checkCanSaveAnyKnightMove(Piece piece) {
+        if (canSaveHelper(piece, piece.x - 2, piece.y - 1)) return true;
+
+        if (canSaveHelper(piece, piece.x - 1, piece.y - 2)) return true;
+
+        if (canSaveHelper(piece, piece.x - 2, piece.y + 1)) return true;
+
+        if (canSaveHelper(piece, piece.x - 1, piece.y + 2)) return true;
+
+        if (canSaveHelper(piece, piece.x + 2, piece.y - 1)) return true;
+
+        if (canSaveHelper(piece, piece.x + 1, piece.y - 2)) return true;
+
+        if (canSaveHelper(piece, piece.x + 2, piece.y + 1)) return true;
+
+        if (canSaveHelper(piece, piece.x + 1, piece.y + 2)) return true;
         return false;
     }
 

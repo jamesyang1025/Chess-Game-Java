@@ -222,4 +222,22 @@ public abstract class Piece {
         return false;
     }
 
+    /**
+     * check if the piece can move as a Knight to the destination
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if can, false otherwise
+     */
+    boolean checkKnightCanMove(int destX, int destY){
+        int diffX = Math.abs(x - destX);
+        int diffY = Math.abs(y - destY);
+
+        if((diffX == 2 && diffY == 1) || (diffX == 1 && diffY == 2)){
+            if(!checkOccupied(destX, destY)){
+                return true;
+            }else return canCapture(destX, destY);
+        }
+        return false;
+    }
+
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 /**
  * All tests for Alfil piece
  */
-public class AlfilTests {
+class AlfilTests {
 
     /**
      * Tests when moving the Alfil to an invalid space (off the board)

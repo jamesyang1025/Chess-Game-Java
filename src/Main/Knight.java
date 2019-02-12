@@ -24,14 +24,7 @@ public class Knight extends Piece {
      */
     public boolean canMove(int destX, int destY){
         if(checkInBound(destX, destY)){
-            int diffX = Math.abs(x - destX);
-            int diffY = Math.abs(y - destY);
-
-            if((diffX == 2 && diffY == 1) || (diffX == 1 && diffY == 2)){
-                if(!checkOccupied(destX, destY)){
-                    return true;
-                }else return canCapture(destX, destY);
-            }
+            return checkKnightCanMove(destX, destY);
         }
         return false;
     }

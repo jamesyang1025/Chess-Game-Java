@@ -136,6 +136,11 @@ public class Board {
                 return true;
         }
 
+        if(piece instanceof Empress){
+            if(piece.canMove(destX, destY))
+                return true;
+        }
+
         if(piece instanceof Pawn){
             return piece.canMove(destX, destY);
         }
