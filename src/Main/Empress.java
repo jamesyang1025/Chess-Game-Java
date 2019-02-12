@@ -16,6 +16,12 @@ public class Empress extends Piece {
         super(board, x, y, player);
     }
 
+    /**
+     * Check whether the Empress can move or not
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if the Empress can move, false otherwise
+     */
     public boolean canMove(int destX, int destY){
 
         if(checkInBound(destX, destY)){

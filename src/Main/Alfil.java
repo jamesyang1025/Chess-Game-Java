@@ -19,7 +19,7 @@ public class Alfil extends Piece {
      * Check whether the Alfil can move or not
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate
-     * @return true if the Main.Knight can move, false otherwise
+     * @return true if the Alfil can move, false otherwise
      */
     public boolean canMove(int destX, int destY){
         if(checkInBound(destX, destY)){
