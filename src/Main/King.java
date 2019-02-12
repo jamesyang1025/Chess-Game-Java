@@ -202,6 +202,17 @@ public class King extends Piece {
 
                     if(piece.canMove(piece.x+1, piece.y+1))    return true;
                 }
+
+                //Alfil
+                if(piece instanceof Alfil){
+                    if(piece.canMove(piece.x-2, piece.y-2))  return true;
+
+                    if(piece.canMove(piece.x-2, piece.y+2))  return true;
+
+                    if(piece.canMove(piece.x+2, piece.y-2))  return true;
+
+                    if(piece.canMove(piece.x+2, piece.y+2))  return true;
+                }
             }
         }
         return false;
@@ -280,6 +291,17 @@ public class King extends Piece {
                     if(canSaveHelper(piece, piece.x-1, piece.y+1))    return true;
 
                     if(canSaveHelper(piece, piece.x+1, piece.y+1))    return true;
+                }
+
+                //Alfil
+                if(piece instanceof Alfil){
+                    if(canSaveHelper(piece, piece.x-2, piece.y-2))  return true;
+
+                    if(canSaveHelper(piece, piece.x-2, piece.y+2))  return true;
+
+                    if(canSaveHelper(piece, piece.x+2, piece.y-2))  return true;
+
+                    if(canSaveHelper(piece, piece.x+2, piece.y+2))  return true;
                 }
 
 

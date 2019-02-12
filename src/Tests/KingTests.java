@@ -3,6 +3,9 @@ import Main.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * All tests for King piece
+ */
 class KingTests {
 
     /**

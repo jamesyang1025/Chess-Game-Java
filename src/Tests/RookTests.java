@@ -5,6 +5,9 @@ import Main.Rook;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
+/**
+ * All tests for Rook piece
+ */
 class RookTests {
 
     /**
