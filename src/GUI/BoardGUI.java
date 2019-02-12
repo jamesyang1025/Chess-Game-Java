@@ -38,26 +38,28 @@ public class BoardGUI {
     public class BoardPanel extends JPanel {
         BoardPanel(){
             super(new GridLayout(8, 8));
-            setPreferredSize(new Dimension(720, 720));
+            setPreferredSize(new Dimension(640, 640));
 
             for(int i =0; i < 8; i++){
 
                 for(int j = 0; j < 8; j++){
                     JButton square = new JButton();
 
-                    square.setIcon(getImage(i, j));
-                    square.setVisible(true);
 
-                    //light background
                     if((i+j) % 2 == 0) {
+                        //set light background
                         square.setBackground(Color.orange);
 
                         add(square);
                     }
                     else {
+                        //set dark background
                         square.setBackground(Color.gray);
                         add(square);
                     }
+
+                    square.setIcon(getImage(i, j));
+                    square.setVisible(true);
 
                 }
 
