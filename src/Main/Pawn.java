@@ -5,6 +5,7 @@ package Main;
  */
 public class Pawn extends Piece {
 
+    protected int moves;
 
     /**
      * Constructs a Main.Pawn piece
@@ -15,6 +16,7 @@ public class Pawn extends Piece {
      */
     public Pawn(Board board, int x, int y, int player){
         super(board, x, y, player);
+        moves = 1;
     }
 
 
@@ -53,14 +55,21 @@ public class Pawn extends Piece {
 
     private boolean pawnCanMove(int destX, int destY) {
         if (canMoveTwo(destX, destY)) {
+            moves++;
             return true;
         }
 
         if (canMoveForward(destX, destY)) {
+            moves++;
             return true;
         }
 
-        return pawnCanCapture(destX, destY);
+        if(pawnCanCapture(destX, destY)) {
+            moves++;
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -72,18 +81,11 @@ public class Pawn extends Piece {
     private boolean canMoveTwo(int destX, int destY){
         int diffY = Math.abs(destY - y);
         if(destX == x && diffY == 2){
-            int num = board.getTurns();
-            if(num == 1){
+            if(moves == 1){
                 if(destY < y){
-                    if(!checkOccupied(destX, y - 1) && !checkOccupied(destX, destY)){
-                        board.setTurns(num+1);
-                        return true;
-                    }
+                    return !checkOccupied(destX, y - 1) && !checkOccupied(destX, destY);
                 }else{
-                    if(!checkOccupied(destX, y + 1) && !checkOccupied(destX, destY)){
-                        board.setTurns(num+1);
-                        return true;
-                    }
+                    return !checkOccupied(destX, y + 1) && !checkOccupied(destX, destY);
                 }
             }
         }

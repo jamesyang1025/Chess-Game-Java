@@ -28,6 +28,14 @@ public abstract class Piece {
     }
 
     /**
+     * Get the player the piece belongs to
+     * @return the player
+     */
+    public int getPlayer(){
+        return player;
+    }
+
+    /**
      * An abstract method that check whether the piece can move to the destination
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate

@@ -56,7 +56,7 @@ public class Board {
      * Get the number of turns
      * @return the number of turns
      */
-    int getTurns() {
+    public int getTurns() {
         return turns;
     }
 
@@ -157,6 +157,15 @@ public class Board {
     public boolean movePiece(Piece piece, int destX, int destY) {
         if(canMove(piece, destX, destY)){
             board[piece.x][piece.y] = null;
+
+            //move by capturing
+            if(board[destX][destY] != null){
+                if(piece.player == 1)
+                    player2Pieces.remove(board[destX][destY]);
+                else
+                    player1Pieces.remove(board[destX][destY]);
+            }
+
             board[destX][destY] = piece;
             piece.x = destX;
             piece.y = destY;
