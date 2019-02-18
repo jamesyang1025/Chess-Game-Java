@@ -58,7 +58,7 @@ public class King extends Piece {
 
             return !isChecked(destX, destY);
         }
-        return false;
+        return true;
     }
 
     /**
@@ -148,7 +148,7 @@ public class King extends Piece {
         for(int i = 0; i < friendlyPieces.size(); i++){
             Piece piece = friendlyPieces.elementAt(i);
 
-            if(piece != null){
+            if(piece != null && piece != this){
 
                 //Rook
                 if(piece instanceof Rook){
@@ -157,7 +157,7 @@ public class King extends Piece {
 
                 //Bishop
                 if(piece instanceof Bishop){
-                    if(checkAnyParallelCanMove(piece)) return true;
+                    if(checkAnyDiagonalCanMove(piece)) return true;
                 }
 
                 //Queen
@@ -249,7 +249,7 @@ public class King extends Piece {
 
         for(int i = 0; i < friendlyPieces.size(); i++){
             Piece piece = friendlyPieces.elementAt(i);
-            if(piece != null){
+            if(piece != null && piece != this){
 
                 //Rook
                 if(piece instanceof Rook){

@@ -135,13 +135,22 @@ class KingTests {
         Piece king2 = new King(board, 7, 5, 2);
         Piece bishop1 = new Bishop(board, 5, 5, 2);
         Piece bishop2 = new Bishop(board, 4, 5, 2);
+        Piece knight = new Knight(board, 0, 0, 1);
+        Piece pawn = new Pawn(board, 0, 2, 1);
+        Piece rook = new Rook(board, 0, 3, 1);
 
         board.getBoard()[7][7] = king;
         board.getBoard()[7][5] = king2;
         board.getBoard()[5][5] = bishop1;
         board.getBoard()[4][5] = bishop2;
+        board.getBoard()[0][0] = knight;
+        board.getBoard()[0][2] = pawn;
+        board.getBoard()[0][3] = rook;
 
         board.player1Pieces.add(king);
+        board.player1Pieces.add(knight);
+        board.player1Pieces.add(pawn);
+        board.player1Pieces.add(rook);
         board.player2Pieces.add(king2);
         board.player2Pieces.add(bishop1);
         board.player2Pieces.add(bishop2);
@@ -204,18 +213,38 @@ class KingTests {
         Piece king1 = new King(board, 2, 4, 1);
         Piece queen = new Queen(board, 2, 2, 1);
         King king2 = new King(board, 0, 3, 2);
-        Piece rook = new Rook(board, 7, 3, 2);
+        Piece rook = new Rook(board, 7, 6, 2);
+        Piece rook2 = new Rook(board, 6, 1, 1);
+        Piece empress = new Empress(board, 7, 7, 2);
+        Piece bishop = new Bishop(board, 6, 6, 2);
+        Piece rook3 = new Rook(board, 6, 7, 2);
+        Piece pawn = new Pawn(board, 5, 6, 2);
+        Piece pawn2 = new Pawn(board, 6, 5, 2);
 
 
         board.getBoard()[2][4] = king1;
         board.getBoard()[0][3] = king2;
         board.getBoard()[2][2] = queen;
-        board.getBoard()[7][3] = rook;
+        board.getBoard()[7][6] = rook;
+        board.getBoard()[6][1] = rook2;
+        board.getBoard()[6][7] = rook3;
+        board.getBoard()[7][7] = empress;
+        board.getBoard()[6][6] = bishop;
+        board.getBoard()[5][6] = pawn;
+        board.getBoard()[6][5] = pawn2;
+
+        board.movePiece(rook2, 5, 1);
 
         board.player1Pieces.add(king1);
         board.player2Pieces.add(king2);
+        board.player2Pieces.add(empress);
+        board.player2Pieces.add(bishop);
         board.player1Pieces.add(queen);
         board.player2Pieces.add(rook);
+        board.player1Pieces.add(rook2);
+        board.player2Pieces.add(rook3);
+        board.player2Pieces.add(pawn);
+        board.player2Pieces.add(pawn2);
 
         Assertions.assertFalse(king2.stalemate());
     }
