@@ -179,6 +179,13 @@ class BoardModel {
                 || (piece.getPlayer() == 2 && board.getTurns() % 2 == 0);
     }
 
+    /**
+     * move the piece
+     * @param object the piece to move
+     * @param destX the destination x coordinate
+     * @param destY the destination y coordinate
+     * @return true if successful, false otherwise
+     */
     boolean movePiece(Object object, int destX, int destY){
         /*
         Piece piece = (Piece) object;
@@ -265,14 +272,18 @@ class BoardModel {
         }
     }
 
-    public boolean canUndo(){
+    boolean canUndo(){
         return commandManager.isUndoAvailable();
     }
 
-    public int undo(){
+    int undo(){
         return commandManager.undo();
     }
 
+    /**
+     * Command implementation to move the piece with undo functionality included
+     * Reference: https://gamedevelopment.tutsplus.com/tutorials/let-your-players-undo-their-in-game-mistakes-with-the-command-pattern--gamedev-1391
+     */
     private class movePieceCommand implements Command {
 
         private BoardModel model;
@@ -281,8 +292,7 @@ class BoardModel {
         private int destY;
         private int prevX;
         private int prevY;
-        private Piece previousPiece;
-        private int previousTurn;
+
 
         private movePieceCommand(BoardModel model, Piece piece, int destX, int destY){
             this.model = model;
@@ -290,10 +300,8 @@ class BoardModel {
             this.destX = destX;
             this.destY = destY;
 
-            this.previousPiece = model.getPiece(destX, destY);
             this.prevX = piece.getX();
             this.prevY = piece.getY();
-            this.previousTurn = model.getBoard().getTurns();
 
 
         }
