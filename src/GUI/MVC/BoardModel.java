@@ -4,6 +4,9 @@ import Main.*;
 
 import java.util.Vector;
 
+/**
+ * Model class
+ */
 class BoardModel {
 
     private Board board;
@@ -14,6 +17,9 @@ class BoardModel {
 
     private int player2Score;
 
+    /**
+     * Constructor for the boardModel class
+     */
     BoardModel(){
         initializeBoard();
         player1Score = 0;
@@ -21,18 +27,36 @@ class BoardModel {
         start = false;
     }
 
+    /**
+     * getter function to get the board
+     * @return the chessboard
+     */
     Board getBoard(){
         return board;
     }
 
+    /**
+     * getter function to get the piece at the given location
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the piece at the given location
+     */
     Piece getPiece(int x, int y){
         return board.getBoard()[x][y];
     }
 
+    /**
+     * getter function to get the game start status
+     * @return true if game started, false otherwise
+     */
     boolean getStart(){
         return start;
     }
 
+    /**
+     * getter function to get the current player
+     * @return the player id
+     */
     int getPlayer(){
         if(board.getTurns() % 2 == 1)
             return 1;
@@ -40,6 +64,10 @@ class BoardModel {
             return 2;
     }
 
+    /**
+     * getter function to get the opponent
+     * @return the opponent id
+     */
     int getOpponent(){
         if(board.getTurns() % 2 == 1)
             return 2;
@@ -47,6 +75,10 @@ class BoardModel {
             return 1;
     }
 
+    /**
+     * setter function to set the winner for this round of the game
+     * @param player the winner id
+     */
     void setWinner(int player){
         if(player == 1)
             player1Score++;
@@ -54,18 +86,35 @@ class BoardModel {
             player2Score++;
     }
 
+    /**
+     * setter function to set the game start status
+     * @param start the game start status
+     */
     void setStart(boolean start){
         this.start = start;
     }
 
+    /**
+     * getter function to get the player 1's score
+     * @return player 1's score
+     */
     int getPlayer1Score(){
         return player1Score;
     }
 
+    /**
+     * getter function to get the player 2's score
+     * @return player 2's score
+     */
     int getPlayer2Score(){
         return player2Score;
     }
 
+    /**
+     * check if the player is in checkmate
+     * @param player the player to check
+     * @return true if the player is in checkmate, false otherwise
+     */
     boolean checkmate(int player){
         Vector<Piece> playerPieces;
         if(player == 1)
@@ -83,6 +132,11 @@ class BoardModel {
         return false;
     }
 
+    /**
+     * check if the player's king is being checked
+     * @param player the player to check
+     * @return true if the player's king is being checked, false otherwise
+     */
     boolean kingChecked(int player){
         Vector<Piece> playerPieces;
         if(player == 1)
@@ -101,21 +155,20 @@ class BoardModel {
     }
 
 
+    /**
+     * check if the player can select the piece to move
+     * @param object the piece to select
+     * @return true if can, false otherwise
+     */
     boolean canSelect(Object object){
         Piece piece = (Piece) object;
-        if((piece.getPlayer() == 1 && board.getTurns() % 2 == 1)
-                || (piece.getPlayer() == 2 && board.getTurns() % 2 == 0)){
-            return true;
-        }
-        return false;
+        return (piece.getPlayer() == 1 && board.getTurns() % 2 == 1)
+                || (piece.getPlayer() == 2 && board.getTurns() % 2 == 0);
     }
 
     boolean canMove(Object object, int destX, int destY){
         Piece piece = (Piece) object;
-        if(board.movePiece(piece, destX, destY)){
-            return true;
-        }
-        return false;
+        return board.movePiece(piece, destX, destY);
     }
 
     /**

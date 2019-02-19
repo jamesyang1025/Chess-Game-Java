@@ -3,11 +3,19 @@ package GUI.MVC;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Controller class
+ */
 class BoardController {
     private BoardModel model;
 
     private BoardView view;
 
+    /**
+     * Constructor for the controller class
+     * @param boardModel the boardModel class
+     * @param boardView the boardView class
+     */
     BoardController(BoardModel boardModel, BoardView boardView){
         model = boardModel;
         view = boardView;

@@ -5,6 +5,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * View class
+ */
 class BoardView extends JFrame {
     private BoardModel model;
 
@@ -14,17 +17,21 @@ class BoardView extends JFrame {
 
     private JLabel player2Label = new JLabel();
 
-    JButton[][] squares = new JButton[8][8];
+    private JButton[][] squares = new JButton[8][8];
 
     private JButton selected;
     private Color prevColor;
     private JButton currSquare;
 
-    JButton forfeitButton = new JButton("Forfeit");
-    JButton restartButton = new JButton("Restart");
-    JButton undoButton = new JButton("Undo");
-    JButton startButton = new JButton("Start");
+    private JButton forfeitButton = new JButton("Forfeit");
+    private JButton restartButton = new JButton("Restart");
+    private JButton undoButton = new JButton("Undo");
+    private JButton startButton = new JButton("Start");
 
+    /**
+     * Constructor for the boardView class
+     * @param boardModel the boardModel class
+     */
     BoardView(BoardModel boardModel){
         model = boardModel;
         boardPanel = new BoardPanel();
@@ -107,6 +114,10 @@ class BoardView extends JFrame {
         }
     }
 
+    /**
+     * helper function to add listener to square buttons
+     * @param squareListener the square listener in the controller class
+     */
     void addSquareListener(ActionListener squareListener){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
@@ -115,22 +126,43 @@ class BoardView extends JFrame {
         }
     }
 
+    /**
+     * helper function to add listener to start button
+     * @param startListener the start listener in the controller class
+     */
     void addStartListener(ActionListener startListener){
         startButton.addActionListener(startListener);
     }
 
+    /**
+     * helper function to add listener to undo button
+     * @param undoListener the undo listener in the controller class
+     */
     void addUndoListener(ActionListener undoListener){
         undoButton.addActionListener(undoListener);
     }
 
+    /**
+     * helper function to add listener to forfeit button
+     * @param forfeitListener the forfeit listener in the controller class
+     */
     void addForfeitListener(ActionListener forfeitListener){
         forfeitButton.addActionListener(forfeitListener);
     }
 
+    /**
+     * helper function to add listener to restart button
+     * @param restartListener the restart listener in the controller class
+     */
     void addRestartListener(ActionListener restartListener){
         restartButton.addActionListener(restartListener);
     }
 
+    /**
+     * cancel current selection
+     * @param square the source square
+     * @return true if successful, false otherwise
+     */
     boolean cancelSelection(Object square){
         currSquare = (JButton) square;
         if(selected != null && currSquare == selected){
@@ -142,6 +174,11 @@ class BoardView extends JFrame {
         return false;
     }
 
+    /**
+     * select the piece to move
+     * @param square the source square
+     * @return true if successful, false otherwise
+     */
     boolean selectMove(Object square){
 
         currSquare = (JButton) square;
@@ -157,6 +194,11 @@ class BoardView extends JFrame {
         return false;
     }
 
+    /**
+     * move the selected piece to the destination square
+     * @param square the destination square
+     * @return true if successful, false otherwise
+     */
     boolean moveToSquare(Object square){
         currSquare = (JButton) square;
         if(selected != null){
@@ -180,6 +222,10 @@ class BoardView extends JFrame {
         return false;
     }
 
+    /**
+     * pop up the confirm dialog for starting the game
+     * @return true if successful, false otherwise
+     */
     boolean confirmStart(){
 
         int response = JOptionPane.showConfirmDialog(null, "Start a new game?");
@@ -193,6 +239,10 @@ class BoardView extends JFrame {
         return false;
     }
 
+    /**
+     * pop up the confirm dialog for forfeiting the game
+     * @return true if successful, false otherwise
+     */
     boolean forfeit(){
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to forfeit");
         //user responds with yes
@@ -214,7 +264,11 @@ class BoardView extends JFrame {
         return false;
     }
 
-    boolean restart(){
+    /**
+     * pop up the confirm dialog for restarting the game
+     * @return true if successful, false otherwise
+     */
+    void restart(){
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to restart");
 
         //user responds with yes
@@ -237,15 +291,17 @@ class BoardView extends JFrame {
                 ResetBoard();
                 player1Label.setText("player Alpha:     " + model.getPlayer1Score());
                 player2Label.setText("player Echo:     " + model.getPlayer2Score());
-                return true;
             }else{
                 model.setStart(true);
             }
         }
 
-        return false;
     }
 
+    /**
+     * pop up the message dialog for checkmate condition
+     * @return true if successful, false otherwise
+     */
     void checkmate(int player){
         String playerStr;
         if(player == 1)
@@ -258,6 +314,10 @@ class BoardView extends JFrame {
         player2Label.setText("player Echo:     " + model.getPlayer2Score());
     }
 
+    /**
+     * pop up the message dialog for king checked condition
+     * @return true if successful, false otherwise
+     */
     void kingChecked(int player){
         JOptionPane.showMessageDialog(null, "Warning! Your king is being checked!");
     }
@@ -266,7 +326,7 @@ class BoardView extends JFrame {
     /**
      * Helper function to reset the chessboard
      */
-    void ResetBoard(){
+    private void ResetBoard(){
         model.initializeBoard();
 
         boardPanel.removeAll();
@@ -286,7 +346,7 @@ class BoardView extends JFrame {
      * @param j the j-index
      * @return the ImageIcon of the corresponding square/piece
      */
-    ImageIcon getImage(int i, int j){
+    private ImageIcon getImage(int i, int j){
         ImageIcon image = null;
 
         //black rook
