@@ -19,17 +19,24 @@ public class BoardGUI {
 
     private BoardPanel boardPanel;
 
+    private int player1Score;
+
+    private int player2Score;
+
+    private JLabel player1Label;
+
+    private JLabel player2Label;
+
     /**
      * Constructor for BoardGUI
      */
     private BoardGUI(){
-        board = new Board(8, 8);
         initializeBoard();
         start = false;
+        player1Score = 0;
+        player2Score = 0;
 
         frame = new JFrame("Chess Game");
-        GridLayout layout = new GridLayout();
-        frame.setLayout(layout);
         boardPanel = new BoardPanel();
         ControlPanel controlPanel = new ControlPanel();
         frame.add(boardPanel, BorderLayout.WEST);
@@ -96,17 +103,30 @@ public class BoardGUI {
         ControlPanel(){
 
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            setBorder(new EmptyBorder(new Insets(320, 100, 150, 200)));
+            setPreferredSize(new Dimension(160, 640));
+            setBorder(new EmptyBorder(new Insets(80, 20, 150, 20)));
             JButton forfeit = new JButton("Forfeit");
             JButton restart = new JButton("Restart");
             JButton undo = new JButton("Undo");
             JButton start = new JButton("Start");
 
+            player1Label = new JLabel();
+            player2Label = new JLabel();
+            player1Label.setText("player 1:     " + player1Score);
+            player2Label.setText("player 2:     " + player2Score);
 
+            add(player2Label);
+            add(Box.createRigidArea(new Dimension(0, 180)));
             add(start);
+            add(Box.createRigidArea(new Dimension(0, 20)));
             add(undo);
+            add(Box.createRigidArea(new Dimension(0, 20)));
             add(forfeit);
+            add(Box.createRigidArea(new Dimension(0, 20)));
             add(restart);
+            add(Box.createRigidArea(new Dimension(0, 150)));
+            add(player1Label);
+
 
             StartListener startListener = new StartListener();
             start.addActionListener(startListener);
@@ -175,6 +195,8 @@ public class BoardGUI {
                     selected.setBackground(prevColor);
                     selected = null;
                     prevColor = null;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Invalid Move!");
                 }
             }
 
@@ -199,8 +221,12 @@ public class BoardGUI {
 
                 int response = JOptionPane.showConfirmDialog(null, "Start the game?");
                 //user responds with yes
-                if(response == 0)
+                if(response == 0) {
+                    ResetBoard();
+                    player1Label.setText("player 1:     " + player1Score);
+                    player2Label.setText("player 2:     " + player2Score);
                     start = true;
+                }
             }
         }
     }
@@ -234,12 +260,20 @@ public class BoardGUI {
             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to forfeit");
             //user responds with yes
             if(response == 0){
-                int player = 0;
+                int winner;
                 if(board.getTurns() % 2 == 1)
-                    player = 1;
+                    winner = 2;
                 else
-                    player = 2;
-                JOptionPane.showMessageDialog(null, "player " + player + " Lost");
+                    winner= 1;
+                JOptionPane.showMessageDialog(null, "player " + winner + " Win");
+                if(winner == 1)
+                    player1Score++;
+                else
+                    player2Score++;
+
+                player1Label.setText("player 1:     " + player1Score);
+                player2Label.setText("player 2:     " + player2Score);
+
                 start = false;
             }
         }
@@ -262,7 +296,7 @@ public class BoardGUI {
 
             //user responds with yes
             if(response == 0){
-                int player = 0;
+                int player;
                 if(board.getTurns() % 2 == 1)
                     player = 1;
                 else
@@ -276,8 +310,8 @@ public class BoardGUI {
                 //the opponent agreed
                 if(response2 == 0){
                     ResetBoard();
-                    initializeBoard();
-                    start = true;
+                    player1Label.setText("player 1:     " + player1Score);
+                    player2Label.setText("player 2:     " + player2Score);
                 }else{
                     start = true;
                 }
@@ -364,11 +398,7 @@ public class BoardGUI {
      */
     private void initializeBoard(){
 
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 0; j++){
-                board.getBoard()[i][j] = null;
-            }
-        }
+        board = new Board(8, 8);
 
         board.getBoard()[0][0] = new Rook(board, 0, 0, 2);
         board.getBoard()[1][0] = new Knight(board, 1, 0, 2);
@@ -410,6 +440,15 @@ public class BoardGUI {
      * Helper function to reset the chessboard
      */
     private void ResetBoard(){
+        initializeBoard();
+
+        boardPanel.removeAll();
+        frame.remove(boardPanel);
         boardPanel = new BoardPanel();
+        frame.add(boardPanel, BorderLayout.WEST);
+        frame.pack();
+
+        selected = null;
+        prevColor = null;
     }
 }
