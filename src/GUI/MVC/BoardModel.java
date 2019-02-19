@@ -186,14 +186,8 @@ class BoardModel {
         board.getBoard()[5][0] = new Bishop(board, 5, 0, 2);
         board.getBoard()[6][0] = new Knight(board, 6, 0, 2);
         board.getBoard()[7][0] = new Rook(board, 7, 0, 2);
-        for(int i = 0; i < 8; i++){
-            board.getBoard()[i][1] = new Pawn(board, i, 1, 2);
-        }
-        for(int y = 0; y < 2; y++){
-            for(int x = 0; x < 8; x++){
-                board.player2Pieces.add(board.getBoard()[x][y]);
-            }
-        }
+        setPawns(1, 2);
+        setPlayerPieces(0, 2, board.player2Pieces);
 
         board.getBoard()[0][7] = new Rook(board, 0, 7, 1);
         board.getBoard()[1][7] = new Knight(board, 1, 7, 1);
@@ -203,14 +197,53 @@ class BoardModel {
         board.getBoard()[5][7] = new Bishop(board, 5, 7, 1);
         board.getBoard()[6][7] = new Knight(board, 6, 7, 1);
         board.getBoard()[7][7] = new Rook(board, 7, 7, 1);
-        for(int i = 0; i < 8; i++){
-            board.getBoard()[i][6] = new Pawn(board, i, 6, 1);
+        setPawns(6, 1);
+        setPlayerPieces(6, 8, board.player1Pieces);
+
+    }
+
+    /**
+     * Helper function to initialize the chessboard with custom pieces
+     */
+    void initializeWithCustomPieces(){
+        board = new Board(8, 8);
+
+        board.getBoard()[0][0] = new Rook(board, 0, 0, 2);
+        board.getBoard()[1][0] = new Empress(board, 1, 0, 2);
+        board.getBoard()[2][0] = new Alfil(board, 2, 0, 2);
+        board.getBoard()[3][0] = new Queen(board, 3, 0, 2);
+        board.getBoard()[4][0] = new King(board, 4, 0, 2);
+        board.getBoard()[5][0] = new Alfil(board, 5, 0, 2);
+        board.getBoard()[6][0] = new Empress(board, 6, 0, 2);
+        board.getBoard()[7][0] = new Rook(board, 7, 0, 2);
+
+        setPawns(1, 2);
+        setPlayerPieces(0, 2, board.player2Pieces);
+
+        board.getBoard()[0][7] = new Rook(board, 0, 7, 1);
+        board.getBoard()[1][7] = new Empress(board, 1, 7, 1);
+        board.getBoard()[2][7] = new Alfil(board, 2, 7, 1);
+        board.getBoard()[3][7] = new Queen(board, 3, 7, 1);
+        board.getBoard()[4][7] = new King(board, 4, 7, 1);
+        board.getBoard()[5][7] = new Alfil(board, 5, 7, 1);
+        board.getBoard()[6][7] = new Empress(board, 6, 7, 1);
+        board.getBoard()[7][7] = new Rook(board, 7, 7, 1);
+        setPawns(6, 1);
+
+        setPlayerPieces(6, 8, board.player1Pieces);
+    }
+
+    private void setPawns(int i2, int i3) {
+        for (int i = 0; i < 8; i++) {
+            board.getBoard()[i][i2] = new Pawn(board, i, i2, i3);
         }
-        for(int y = 6; y < 8; y++){
-            for(int x = 0; x < 8; x++){
-                board.player1Pieces.add(board.getBoard()[x][y]);
+    }
+
+    private void setPlayerPieces(int i2, int i3, Vector<Piece> player2Pieces) {
+        for (int y = i2; y < i3; y++) {
+            for (int x = 0; x < 8; x++) {
+                player2Pieces.add(board.getBoard()[x][y]);
             }
         }
-
     }
 }

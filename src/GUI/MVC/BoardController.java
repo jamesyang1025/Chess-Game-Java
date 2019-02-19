@@ -30,6 +30,10 @@ class BoardController {
 
         view.addRestartListener(new RestartListener());
 
+        view.addUndoListener(new UndoListener());
+
+        view.addCustomPiecesListener(new CustomPiecesListener());
+
     }
 
     /**
@@ -133,6 +137,39 @@ class BoardController {
             view.restart();
 
 
+        }
+    }
+
+    /**
+     * ActionListener of when the undo button is pressed
+     */
+    public class UndoListener implements ActionListener{
+
+        /**
+         * When the user pressed the undo button
+         * @param e the undo button
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(!model.getStart()) return;
+
+
+        }
+    }
+
+    /**
+     * ActionListener of when the use custom pieces button is pressed
+     */
+    public class CustomPiecesListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(!model.getStart()){
+                if(view.useCustomPieces()){
+                    view.addSquareListener(new SquareListener());
+                    model.setStart(true);
+                }
+            }
         }
     }
 

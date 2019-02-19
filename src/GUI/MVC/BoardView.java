@@ -27,6 +27,7 @@ class BoardView extends JFrame {
     private JButton restartButton = new JButton("Restart");
     private JButton undoButton = new JButton("Undo");
     private JButton startButton = new JButton("Start");
+    private JButton useCustomPiecesButton = new JButton("Use Custom Pieces");
 
     /**
      * Constructor for the boardView class
@@ -45,7 +46,7 @@ class BoardView extends JFrame {
     }
 
     /**
-     * The chessboard panel
+     * The classic chessboard panel
      */
     class BoardPanel extends JPanel {
         BoardPanel(){
@@ -82,6 +83,9 @@ class BoardView extends JFrame {
         }
     }
 
+
+
+
     /**
      * The control panel where the restart, forfeit, and undo is
      */
@@ -89,7 +93,7 @@ class BoardView extends JFrame {
         ControlPanel(){
 
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            setPreferredSize(new Dimension(160, 640));
+            setPreferredSize(new Dimension(200, 640));
             setBorder(new EmptyBorder(new Insets(80, 20, 150, 20)));
 
 
@@ -99,7 +103,7 @@ class BoardView extends JFrame {
             player2Label.setText("player Echo:     " + model.getPlayer2Score());
 
             add(player2Label);
-            add(Box.createRigidArea(new Dimension(0, 180)));
+            add(Box.createRigidArea(new Dimension(0, 150)));
             add(startButton);
             add(Box.createRigidArea(new Dimension(0, 20)));
             add(undoButton);
@@ -107,6 +111,8 @@ class BoardView extends JFrame {
             add(forfeitButton);
             add(Box.createRigidArea(new Dimension(0, 20)));
             add(restartButton);
+            add(Box.createRigidArea(new Dimension(0, 20)));
+            add(useCustomPiecesButton);
             add(Box.createRigidArea(new Dimension(0, 150)));
             add(player1Label);
 
@@ -156,6 +162,14 @@ class BoardView extends JFrame {
      */
     void addRestartListener(ActionListener restartListener){
         restartButton.addActionListener(restartListener);
+    }
+
+    /**
+     * helper function to add listener to customPieces button
+     * @param customPiecesListener the customPieces button in the controller class
+     */
+    void addCustomPiecesListener(ActionListener customPiecesListener){
+        useCustomPiecesButton.addActionListener(customPiecesListener);
     }
 
     /**
@@ -231,7 +245,7 @@ class BoardView extends JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Start a new game?");
         //user responds with yes
         if(response == 0) {
-            ResetBoard();
+            ResetBoard(false);
             player1Label.setText("player Alpha:     " + model.getPlayer1Score());
             player2Label.setText("player Echo:     " + model.getPlayer2Score());
             return true;
@@ -288,7 +302,7 @@ class BoardView extends JFrame {
 
             //the opponent agreed
             if(response2 == 0){
-                ResetBoard();
+                ResetBoard(false);
                 player1Label.setText("player Alpha:     " + model.getPlayer1Score());
                 player2Label.setText("player Echo:     " + model.getPlayer2Score());
             }else{
@@ -296,6 +310,35 @@ class BoardView extends JFrame {
             }
         }
 
+    }
+
+    /**
+     * initialize the chessboard with custom pieces
+     * @return true if successful, false otherwise
+     */
+    boolean useCustomPieces(){
+        int response = JOptionPane.showConfirmDialog(null, "Start a new game with custom pieces?");
+        //user responds with yes
+        if(response == 0) {
+
+            ResetBoard(true);
+
+            squares[0][1].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Empress_Black.png"));
+            squares[0][6].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Empress_Black.png"));
+            squares[0][2].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Alfil_Black.png"));
+            squares[0][5].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Alfil_Black.png"));
+
+
+            squares[7][1].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Empress_White.png"));
+            squares[7][6].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Empress_White.png"));
+            squares[7][2].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Alfil_White.png"));
+            squares[7][5].setIcon(new ImageIcon("C:/Users/James Yang/Desktop/CS242/cs242-assignment1/src/GUI/Images/Alfil_White.png"));
+
+            player1Label.setText("player Alpha:     " + model.getPlayer1Score());
+            player2Label.setText("player Echo:     " + model.getPlayer2Score());
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -326,8 +369,11 @@ class BoardView extends JFrame {
     /**
      * Helper function to reset the chessboard
      */
-    private void ResetBoard(){
-        model.initializeBoard();
+    private void ResetBoard(boolean CustomPieces){
+        if(!CustomPieces)
+            model.initializeBoard();
+        else
+            model.initializeWithCustomPieces();
 
         boardPanel.removeAll();
         this.remove(boardPanel);
