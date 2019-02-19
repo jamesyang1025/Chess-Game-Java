@@ -192,10 +192,14 @@ class KingTests {
         Piece king1 = new King(board, 2, 4, 1);
         King king2 = new King(board, 0, 3, 2);
         Piece queen = new Queen(board, 2, 2, 1);
+        Piece pawn1 = new Pawn(board, 7, 6, 1);
 
         board.getBoard()[2][4] = king1;
         board.getBoard()[0][3] = king2;
         board.getBoard()[2][2] = queen;
+        board.getBoard()[7][6] = pawn1;
+
+        board.movePiece(pawn1, 7, 5);
 
         board.player1Pieces.add(king1);
         board.player2Pieces.add(king2);

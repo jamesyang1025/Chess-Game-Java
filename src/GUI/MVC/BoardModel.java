@@ -2,6 +2,8 @@ package GUI.MVC;
 
 import Main.*;
 
+import java.util.Vector;
+
 class BoardModel {
 
     private Board board;
@@ -63,6 +65,41 @@ class BoardModel {
     int getPlayer2Score(){
         return player2Score;
     }
+
+    boolean checkmate(int player){
+        Vector<Piece> playerPieces;
+        if(player == 1)
+            playerPieces = board.player1Pieces;
+        else
+            playerPieces = board.player2Pieces;
+
+        for(int i = 0; i < playerPieces.size(); i++){
+            Piece piece = playerPieces.elementAt(i);
+            if(piece instanceof King){
+                return ((King) piece).checkmate();
+            }
+        }
+
+        return false;
+    }
+
+    boolean kingChecked(int player){
+        Vector<Piece> playerPieces;
+        if(player == 1)
+            playerPieces = board.player1Pieces;
+        else
+            playerPieces = board.player2Pieces;
+
+        for(int i = 0; i < playerPieces.size(); i++){
+            Piece piece = playerPieces.elementAt(i);
+            if(piece instanceof King){
+                return ((King) piece).isChecked(piece.getX(), piece.getY());
+            }
+        }
+
+        return false;
+    }
+
 
     boolean canSelect(Object object){
         Piece piece = (Piece) object;

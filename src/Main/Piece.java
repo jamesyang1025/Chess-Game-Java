@@ -36,6 +36,22 @@ public abstract class Piece {
     }
 
     /**
+     * Get x coordinate
+     * @return x coordinate
+     */
+    public int getX(){
+        return x;
+    }
+
+    /**
+     * Get y coordinate
+     * @return y coordinate
+     */
+    public int getY(){
+        return y;
+    }
+
+    /**
      * An abstract method that check whether the piece can move to the destination
      * @param destX the destination x coordinate
      * @param destY the destination y coordinate

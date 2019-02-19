@@ -43,7 +43,25 @@ class BoardController {
             if(view.cancelSelection(e.getSource()))
                 return;
 
-            view.moveToSquare(e.getSource());
+            if(view.moveToSquare(e.getSource())){
+                //check checkmate
+                if(model.checkmate(model.getPlayer())){
+                    System.out.println("player " + model.getPlayer());
+                    System.out.println("turn " + model.getBoard().getTurns());
+                    model.setStart(false);
+                    model.setWinner(model.getOpponent());
+                    view.checkmate(model.getOpponent());
+
+                    return;
+                }
+
+                //check if your king is checked
+                if(model.kingChecked(model.getOpponent())){
+                    view.kingChecked(model.getOpponent());
+
+                }
+
+            }
 
 
 
@@ -105,6 +123,7 @@ class BoardController {
             if(!model.getStart())   return;
 
             view.restart();
+
 
         }
     }

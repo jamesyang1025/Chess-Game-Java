@@ -67,7 +67,7 @@ public class King extends Piece {
      * @param y the y coordinate of the king
      * @return true if the king is checked, false otherwise
      */
-    private boolean isChecked(int x, int y){
+    public boolean isChecked(int x, int y){
         Vector<Piece> opponentPieces;
         if(player == 1)
             opponentPieces = board.getPlayer2Pieces();
@@ -98,11 +98,10 @@ public class King extends Piece {
         if(isChecked(x, y)){
 
 
-            //the king is already checked
+
             if (!kingCanMove()){
                 return !friendlyCanSave();
             }
-            return true;
         }
 
         return false;
@@ -127,7 +126,6 @@ public class King extends Piece {
             if (!kingCanMove()){
                 return !friendlyCanMove();
             }
-            return true;
         }
 
         return false;
@@ -152,59 +150,59 @@ public class King extends Piece {
 
                 //Rook
                 if(piece instanceof Rook){
-                    if(checkAnyParallelCanMove(piece)) return true;
+                    if(checkAnyParallelCanMove(piece)) return !isChecked(x, y);
                 }
 
                 //Bishop
                 if(piece instanceof Bishop){
-                    if(checkAnyDiagonalCanMove(piece)) return true;
+                    if(checkAnyDiagonalCanMove(piece)) return !isChecked(x, y);
                 }
 
                 //Queen
                 if(piece instanceof Queen){
-                    if(checkAnyParallelCanMove(piece)) return true;
+                    if(checkAnyParallelCanMove(piece)) return !isChecked(x, y);
 
-                    if(checkAnyDiagonalCanMove(piece)) return true;
+                    if(checkAnyDiagonalCanMove(piece)) return !isChecked(x, y);
                 }
 
                 //Knight
                 if(piece instanceof Knight){
-                    if (checkAnyKnightCanMove(piece)) return true;
+                    if (checkAnyKnightCanMove(piece)) return !isChecked(x, y);
                 }
 
                 //Pawn
                 if(piece instanceof Pawn){
                     //player 1
-                    if(piece.canMove(piece.x, piece.y-1))    return true;
+                    if(piece.canMove(piece.x, piece.y-1))    return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x-1, piece.y-1))    return true;
+                    if(piece.canMove(piece.x-1, piece.y-1))    return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x+1, piece.y-1))    return true;
+                    if(piece.canMove(piece.x+1, piece.y-1))    return !isChecked(x, y);
 
                     //player 2
-                    if(piece.canMove(piece.x, piece.y+1))    return true;
+                    if(piece.canMove(piece.x, piece.y+1))    return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x-1, piece.y+1))    return true;
+                    if(piece.canMove(piece.x-1, piece.y+1))    return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x+1, piece.y+1))    return true;
+                    if(piece.canMove(piece.x+1, piece.y+1))    return !isChecked(x, y);
                 }
 
                 //Alfil
                 if(piece instanceof Alfil){
-                    if(piece.canMove(piece.x-2, piece.y-2))  return true;
+                    if(piece.canMove(piece.x-2, piece.y-2))  return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x-2, piece.y+2))  return true;
+                    if(piece.canMove(piece.x-2, piece.y+2))  return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x+2, piece.y-2))  return true;
+                    if(piece.canMove(piece.x+2, piece.y-2))  return !isChecked(x, y);
 
-                    if(piece.canMove(piece.x+2, piece.y+2))  return true;
+                    if(piece.canMove(piece.x+2, piece.y+2))  return !isChecked(x, y);
                 }
 
                 //Empress
                 if(piece instanceof Empress){
-                    if(checkAnyParallelCanMove(piece)) return true;
+                    if(checkAnyParallelCanMove(piece)) return !isChecked(x, y);
 
-                    if (checkAnyKnightCanMove(piece)) return true;
+                    if (checkAnyKnightCanMove(piece)) return !isChecked(x, y);
 
                 }
             }
@@ -493,7 +491,7 @@ public class King extends Piece {
         int prevY = piece.y;
         if(board.movePiece(piece, destX, destY)){
             board.setTurns(board.getTurns()-1);
-            if(kingCanMove()){
+            if(!isChecked(x, y)){
                 board.undoMovePiece(piece, prevX, prevY);
                 return true;
             }

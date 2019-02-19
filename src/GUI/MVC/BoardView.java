@@ -88,8 +88,8 @@ class BoardView extends JFrame {
 
             player1Label = new JLabel();
             player2Label = new JLabel();
-            player1Label.setText("player 1:     " + model.getPlayer1Score());
-            player2Label.setText("player 2:     " + model.getPlayer2Score());
+            player1Label.setText("Player Alpha:     " + model.getPlayer1Score());
+            player2Label.setText("player Echo:     " + model.getPlayer2Score());
 
             add(player2Label);
             add(Box.createRigidArea(new Dimension(0, 180)));
@@ -157,7 +157,7 @@ class BoardView extends JFrame {
         return false;
     }
 
-    void moveToSquare(Object square){
+    boolean moveToSquare(Object square){
         currSquare = (JButton) square;
         if(selected != null){
             int destX = (int) currSquare.getClientProperty("x");
@@ -170,20 +170,24 @@ class BoardView extends JFrame {
                 selected.setBackground(prevColor);
                 selected = null;
                 prevColor = null;
+
+                return true;
             }else{
                 JOptionPane.showMessageDialog(null, "Invalid Move!");
+                return false;
             }
         }
+        return false;
     }
 
     boolean confirmStart(){
 
-        int response = JOptionPane.showConfirmDialog(null, "Start the game?");
+        int response = JOptionPane.showConfirmDialog(null, "Start a new game?");
         //user responds with yes
         if(response == 0) {
             ResetBoard();
-            player1Label.setText("player 1:     " + model.getPlayer1Score());
-            player2Label.setText("player 2:     " + model.getPlayer2Score());
+            player1Label.setText("player Alpha:     " + model.getPlayer1Score());
+            player2Label.setText("player Echo:     " + model.getPlayer2Score());
             return true;
         }
         return false;
@@ -194,11 +198,16 @@ class BoardView extends JFrame {
         //user responds with yes
         if(response == 0){
             int winner = model.getOpponent();
-            JOptionPane.showMessageDialog(null, "player " + winner + " Win");
+            String winnerStr;
+            if(winner == 1)
+                winnerStr = "Alpha";
+            else
+                winnerStr = "Echo";
+            JOptionPane.showMessageDialog(null, "player " + winnerStr + " Win");
             model.setWinner(winner);
 
-            player1Label.setText("player 1:     " + model.getPlayer1Score());
-            player2Label.setText("player 2:     " + model.getPlayer2Score());
+            player1Label.setText("player Alpha:     " + model.getPlayer1Score());
+            player2Label.setText("player Echo:     " + model.getPlayer2Score());
 
             return true;
         }
@@ -214,14 +223,21 @@ class BoardView extends JFrame {
 
             JOptionPane.showMessageDialog(null, "Awaiting the other player's response");
             model.setStart(false);
-            int response2 = JOptionPane.showConfirmDialog(null, "Player " + player
+            String playerStr;
+            if(player == 1)
+                playerStr = "Alpha";
+            else
+                playerStr = "Echo";
+
+            int response2 = JOptionPane.showConfirmDialog(null, "Player " + playerStr
                     + " requested to restart. Do you agree?");
 
             //the opponent agreed
             if(response2 == 0){
                 ResetBoard();
-                player1Label.setText("player 1:     " + model.getPlayer1Score());
-                player2Label.setText("player 2:     " + model.getPlayer2Score());
+                player1Label.setText("player Alpha:     " + model.getPlayer1Score());
+                player2Label.setText("player Echo:     " + model.getPlayer2Score());
+                return true;
             }else{
                 model.setStart(true);
             }
@@ -229,6 +245,23 @@ class BoardView extends JFrame {
 
         return false;
     }
+
+    void checkmate(int player){
+        String playerStr;
+        if(player == 1)
+            playerStr = "Alpha";
+        else
+            playerStr = "Echo";
+
+        JOptionPane.showMessageDialog(null, "checkmate! Player " + playerStr + " Win!");
+        player1Label.setText("player Alpha:     " + model.getPlayer1Score());
+        player2Label.setText("player Echo:     " + model.getPlayer2Score());
+    }
+
+    void kingChecked(int player){
+        JOptionPane.showMessageDialog(null, "Warning! Your king is being checked!");
+    }
+
 
     /**
      * Helper function to reset the chessboard
@@ -241,6 +274,9 @@ class BoardView extends JFrame {
         boardPanel = new BoardPanel();
         this.add(boardPanel, BorderLayout.WEST);
         this.pack();
+
+        selected = null;
+        prevColor = null;
 
     }
 
