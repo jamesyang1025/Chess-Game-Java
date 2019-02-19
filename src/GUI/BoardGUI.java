@@ -1,6 +1,7 @@
 package GUI;
 import Main.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,18 +13,27 @@ public class BoardGUI {
 
     private Board board;
 
+    private boolean start;
+
+    private JFrame frame;
+
+    private BoardPanel boardPanel;
+
     /**
      * Constructor for BoardGUI
      */
     private BoardGUI(){
         board = new Board(8, 8);
         initializeBoard();
-        JFrame frame = new JFrame("Chess Game");
-        frame.setSize(500, 500);
+        start = false;
+
+        frame = new JFrame("Chess Game");
         GridLayout layout = new GridLayout();
         frame.setLayout(layout);
-        BoardPanel boardPanel = new BoardPanel();
-        frame.add(boardPanel);
+        boardPanel = new BoardPanel();
+        ControlPanel controlPanel = new ControlPanel();
+        frame.add(boardPanel, BorderLayout.WEST);
+        frame.add(controlPanel, BorderLayout.EAST);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -70,21 +80,62 @@ public class BoardGUI {
                     square.putClientProperty("y", i);
                     square.setVisible(true);
 
-                    ButtonListener button = new ButtonListener();
+                    SquareListener button = new SquareListener();
                     square.addActionListener(button);
                 }
 
             }
+
+        }
+    }
+
+    /**
+     * The control panel where the restart, forfeit, and undo is
+     */
+    public class ControlPanel extends JPanel{
+        ControlPanel(){
+
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            setBorder(new EmptyBorder(new Insets(320, 100, 150, 200)));
+            JButton forfeit = new JButton("Forfeit");
+            JButton restart = new JButton("Restart");
+            JButton undo = new JButton("Undo");
+            JButton start = new JButton("Start");
+
+
+            add(start);
+            add(undo);
+            add(forfeit);
+            add(restart);
+
+            StartListener startListener = new StartListener();
+            start.addActionListener(startListener);
+            ForfeitListener forfeitListener = new ForfeitListener();
+            forfeit.addActionListener(forfeitListener);
+            RestartListener restartListener = new RestartListener();
+            restart.addActionListener(restartListener);
+
+
         }
     }
 
     private JButton selected;
     private Color prevColor;
 
-    public class ButtonListener implements ActionListener{
+    /**
+     * ActionListener of when button is pressed
+     */
+    public class SquareListener implements ActionListener{
 
+        /**
+         * When users pressed any square on the chessboard
+         * @param e the source button
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            if(!start)  return;
+
             JButton square = (JButton) e.getSource();
             System.out.println("" + square.getClientProperty("piece"));
 
@@ -111,7 +162,7 @@ public class BoardGUI {
                 return;
             }
 
-            //move to an unoccupied place
+            //move to a new square
             if(selected != null){
                 int destX = (int) square.getClientProperty("x");
                 int destY = (int) square.getClientProperty("y");
@@ -130,6 +181,107 @@ public class BoardGUI {
 
 
 
+        }
+    }
+
+    /**
+     * ActionListener of when the start button is pressed
+     */
+    public class StartListener implements ActionListener{
+
+        /**
+         * when user pressed the start button
+         * @param e the start button
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(!start) {
+
+                int response = JOptionPane.showConfirmDialog(null, "Start the game?");
+                //user responds with yes
+                if(response == 0)
+                    start = true;
+            }
+        }
+    }
+
+    /**
+     * ActionListener of when the undo button is pressed
+     */
+    public class UndoListener implements ActionListener{
+
+        /**
+         * when user pressed the undo button
+         * @param e the undo button
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    /**
+     * ActionListener of when the forfeit button is pressed
+     */
+    public class ForfeitListener implements ActionListener{
+
+        /**
+         * When the user pressed the forfeit button
+         * @param e the forfeit button
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to forfeit");
+            //user responds with yes
+            if(response == 0){
+                int player = 0;
+                if(board.getTurns() % 2 == 1)
+                    player = 1;
+                else
+                    player = 2;
+                JOptionPane.showMessageDialog(null, "player " + player + " Lost");
+                start = false;
+            }
+        }
+    }
+
+    /**
+     * ActionListener of when the restart button is pressed
+     */
+    public class RestartListener implements ActionListener{
+
+        /**
+         * When the user pressed the restart button
+         * @param e the restart button
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(!start)  return;
+
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to restart");
+
+            //user responds with yes
+            if(response == 0){
+                int player = 0;
+                if(board.getTurns() % 2 == 1)
+                    player = 1;
+                else
+                    player = 2;
+
+                JOptionPane.showMessageDialog(null, "Awaiting the other player's response");
+                start = false;
+                int response2 = JOptionPane.showConfirmDialog(null, "Player " + player
+                        + " requested to restart. Do you agree?");
+
+                //the opponent agreed
+                if(response2 == 0){
+                    ResetBoard();
+                    initializeBoard();
+                    start = true;
+                }else{
+                    start = true;
+                }
+            }
         }
     }
 
@@ -211,6 +363,13 @@ public class BoardGUI {
      * Helper function to initialize the chessboard
      */
     private void initializeBoard(){
+
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 0; j++){
+                board.getBoard()[i][j] = null;
+            }
+        }
+
         board.getBoard()[0][0] = new Rook(board, 0, 0, 2);
         board.getBoard()[1][0] = new Knight(board, 1, 0, 2);
         board.getBoard()[2][0] = new Bishop(board, 2, 0, 2);
@@ -245,5 +404,12 @@ public class BoardGUI {
             }
         }
 
+    }
+
+    /**
+     * Helper function to reset the chessboard
+     */
+    private void ResetBoard(){
+        boardPanel = new BoardPanel();
     }
 }
