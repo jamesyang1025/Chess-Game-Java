@@ -29,6 +29,10 @@ class BoardView extends JFrame {
     private JButton startButton = new JButton("Start");
     private JButton useCustomPiecesButton = new JButton("Use Custom Pieces");
 
+    Object getSelected(){
+        return selected;
+    }
+
     /**
      * Constructor for the boardView class
      * @param boardModel the boardModel class

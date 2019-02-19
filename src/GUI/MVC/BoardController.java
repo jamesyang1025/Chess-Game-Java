@@ -154,6 +154,8 @@ class BoardController {
         public void actionPerformed(ActionEvent e) {
             if(!model.getStart()) return;
 
+            if(view.getSelected() != null) return;
+
             if(!model.canUndo()){
                 System.out.println("No undo available");
                 return;

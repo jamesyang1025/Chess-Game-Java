@@ -11,7 +11,8 @@ class CommandManager {
 
     boolean executeCommand(Command c) {
         boolean ret = c.execute();
-        undos.push(c);
+        if(ret)
+            undos.push(c);
         return ret;
     }
 
