@@ -137,7 +137,8 @@ class KingTests {
         Piece bishop2 = new Bishop(board, 4, 5, 2);
         Piece knight = new Knight(board, 0, 0, 1);
         Piece pawn = new Pawn(board, 0, 2, 1);
-        Piece rook = new Rook(board, 0, 3, 1);
+        Piece rook = new Rook(board, 2, 1, 1);
+        Piece bishop3 = new Bishop(board, 6, 1, 1);
 
         board.getBoard()[7][7] = king;
         board.getBoard()[7][5] = king2;
@@ -145,12 +146,14 @@ class KingTests {
         board.getBoard()[4][5] = bishop2;
         board.getBoard()[0][0] = knight;
         board.getBoard()[0][2] = pawn;
-        board.getBoard()[0][3] = rook;
+        board.getBoard()[2][1] = rook;
+        board.getBoard()[6][1] = bishop3;
 
         board.player1Pieces.add(king);
         board.player1Pieces.add(knight);
         board.player1Pieces.add(pawn);
         board.player1Pieces.add(rook);
+        board.player1Pieces.add(bishop3);
         board.player2Pieces.add(king2);
         board.player2Pieces.add(bishop1);
         board.player2Pieces.add(bishop2);
@@ -184,10 +187,10 @@ class KingTests {
     }
 
     /**
-     * Chekc stalemate scenario
+     * stalemate scenario
      */
     @Test
-    void KingStalemate() {
+    void stalemate() {
         Board board = new Board(8, 8);
         Piece king1 = new King(board, 2, 4, 1);
         King king2 = new King(board, 0, 3, 2);
@@ -206,6 +209,7 @@ class KingTests {
         board.player1Pieces.add(queen);
 
         Assertions.assertTrue(king2.stalemate());
+
     }
 
     /**
@@ -213,6 +217,44 @@ class KingTests {
      */
     @Test
     void KingStalemateFriendlySave() {
+        Board board = new Board(8, 8);
+        Piece king1 = new King(board, 2, 4, 1);
+        King king2 = new King(board, 0, 3, 2);
+        Piece queen = new Queen(board, 2, 2, 1);
+        Piece pawn1 = new Pawn(board, 7, 5, 2);
+        Piece pawn2 = new Pawn(board, 7, 4, 2);
+        Piece pawn3 = new Pawn(board, 5, 6, 2);
+        Piece pawn4 = new Pawn(board, 5, 4, 2);
+        Piece bishop = new Bishop(board, 6, 5, 2);
+
+
+        board.getBoard()[2][4] = king1;
+        board.getBoard()[0][3] = king2;
+        board.getBoard()[2][2] = queen;
+        board.getBoard()[7][5] = pawn1;
+        board.getBoard()[7][4] = pawn2;
+        board.getBoard()[5][6] = pawn3;
+        board.getBoard()[5][4] = pawn4;
+
+        board.movePiece(pawn1, 7, 6);
+
+        board.player1Pieces.add(king1);
+        board.player2Pieces.add(king2);
+        board.player1Pieces.add(queen);
+        board.player2Pieces.add(bishop);
+        board.player2Pieces.add(pawn1);
+        board.player2Pieces.add(pawn2);
+        board.player2Pieces.add(pawn3);
+        board.player2Pieces.add(pawn4);
+
+        Assertions.assertFalse(king2.stalemate());
+    }
+
+    /**
+     * Friendly scenario where a friendly piece can save the king
+     */
+    @Test
+    void KingStalemateFriendlySave2() {
         Board board = new Board(8, 8);
         Piece king1 = new King(board, 2, 4, 1);
         Piece queen = new Queen(board, 2, 2, 1);

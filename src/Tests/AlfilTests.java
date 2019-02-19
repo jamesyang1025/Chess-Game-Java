@@ -33,7 +33,11 @@ class AlfilTests {
 
         board.movePiece(alfil, 2, 3);
 
-
+        Assertions.assertEquals(alfil.getX(), 2);
+        Assertions.assertEquals(alfil.getY(), 3);
+        Assertions.assertEquals(alfil.getPlayer(), 1);
+        alfil.setPlayer(2);
+        Assertions.assertEquals(alfil.getPlayer(), 2);
         Assertions.assertEquals(alfil, board.getBoard()[2][3]);
         Assertions.assertNull(board.getBoard()[4][5]);
     }
