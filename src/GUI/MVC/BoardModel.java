@@ -17,6 +17,8 @@ class BoardModel {
 
     private int player2Score;
 
+    private CommandManager commandManager;
+
     /**
      * Constructor for the boardModel class
      */
@@ -25,6 +27,8 @@ class BoardModel {
         player1Score = 0;
         player2Score = 0;
         start = false;
+
+        commandManager = new CommandManager();
     }
 
     /**
@@ -34,6 +38,15 @@ class BoardModel {
     Board getBoard(){
         return board;
     }
+
+    Vector<Piece> getPlayer1Pieces() {
+        return board.player1Pieces;
+    }
+
+    Vector<Piece> getPlayer2Pieces() {
+        return board.player2Pieces;
+    }
+
 
     /**
      * getter function to get the piece at the given location
@@ -166,9 +179,14 @@ class BoardModel {
                 || (piece.getPlayer() == 2 && board.getTurns() % 2 == 0);
     }
 
-    boolean canMove(Object object, int destX, int destY){
+    boolean movePiece(Object object, int destX, int destY){
+        /*
         Piece piece = (Piece) object;
         return board.movePiece(piece, destX, destY);
+        */
+
+        Piece piece = (Piece) object;
+        return commandManager.executeCommand(new movePieceCommand(this, piece, destX, destY));
     }
 
     /**
@@ -244,6 +262,69 @@ class BoardModel {
             for (int x = 0; x < 8; x++) {
                 player2Pieces.add(board.getBoard()[x][y]);
             }
+        }
+    }
+
+    public boolean canUndo(){
+        return commandManager.isUndoAvailable();
+    }
+
+    public int undo(){
+        return commandManager.undo();
+    }
+
+    private class movePieceCommand implements Command {
+
+        private BoardModel model;
+        private Piece piece;
+        private int destX;
+        private int destY;
+        private int prevX;
+        private int prevY;
+        private Piece previousPiece;
+        private int previousTurn;
+
+        private movePieceCommand(BoardModel model, Piece piece, int destX, int destY){
+            this.model = model;
+            this.piece = piece;
+            this.destX = destX;
+            this.destY = destY;
+
+            this.previousPiece = model.getPiece(destX, destY);
+            this.prevX = piece.getX();
+            this.prevY = piece.getY();
+            this.previousTurn = model.getBoard().getTurns();
+
+
+        }
+
+        @Override
+        public boolean execute() {
+            return model.getBoard().movePiece(piece, destX, destY);
+        }
+
+        @Override
+        public int undo() {
+            int x = piece.getX();
+            int y = piece.getY();
+            int player = piece.getPlayer();
+            if(piece instanceof Pawn){
+                ((Pawn) piece).moves--;
+                if(player == 1)
+                    piece.setPlayer(2);
+                else
+                    piece.setPlayer(1);
+            }
+            model.getBoard().movePiece(piece, prevX, prevY);
+            if(piece instanceof Pawn) {
+                ((Pawn) piece).moves--;
+                if (player == 1)
+                    piece.setPlayer(1);
+                else
+                    piece.setPlayer(2);
+            }
+            model.getBoard().setTurns(model.getBoard().getTurns() - 2);
+            return x * 1000 + y * 100 + prevX * 10 + prevY;
         }
     }
 }

@@ -60,11 +60,12 @@ public class Board {
         return turns;
     }
 
+
     /**
      * Set the number of turns
      * @param n the number of turns to set
      */
-    void setTurns(int n) {
+    public void setTurns(int n) {
         turns = n;
     }
 

@@ -5,7 +5,7 @@ package Main;
  */
 public class Pawn extends Piece {
 
-    protected int moves;
+    public int moves;
 
     /**
      * Constructs a Main.Pawn piece

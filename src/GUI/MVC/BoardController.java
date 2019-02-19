@@ -1,5 +1,6 @@
 package GUI.MVC;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -152,6 +153,15 @@ class BoardController {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(!model.getStart()) return;
+
+            if(!model.canUndo()){
+                System.out.println("No undo available");
+                return;
+            }
+
+            System.out.println("Undo");
+            int coordinate = model.undo();
+            view.undo(coordinate);
 
 
         }

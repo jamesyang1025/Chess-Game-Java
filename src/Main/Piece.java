@@ -35,6 +35,10 @@ public abstract class Piece {
         return player;
     }
 
+    public void setPlayer(int player) {
+        this.player = player;
+    }
+
     /**
      * Get x coordinate
      * @return x coordinate

@@ -218,9 +218,13 @@ class BoardView extends JFrame {
         if(selected != null){
             int destX = (int) currSquare.getClientProperty("x");
             int destY = (int) currSquare.getClientProperty("y");
-            if(model.canMove(selected.getClientProperty("piece"), destX, destY)){
+
+
+            if(model.movePiece(selected.getClientProperty("piece"), destX, destY)){
+
                 currSquare.putClientProperty("piece", selected.getClientProperty("piece"));
                 selected.putClientProperty("piece", null);
+
                 currSquare.setIcon(selected.getIcon());
                 selected.setIcon(null);
                 selected.setBackground(prevColor);
@@ -235,6 +239,25 @@ class BoardView extends JFrame {
         }
         return false;
     }
+
+    /**
+     * Update the view for undo
+     * @param coordinate the coordinate of the new and previous square
+     */
+    void undo(int coordinate){
+        int prevX = coordinate / 1000 % 10;
+        int prevY = coordinate / 100 % 10;
+        int x = coordinate / 10 % 10;
+        int y = coordinate % 10;
+
+        squares[y][x].putClientProperty("piece", squares[prevY][prevX].getClientProperty("piece"));
+        squares[prevY][prevX].putClientProperty("piece", null);
+        squares[y][x].setIcon(squares[prevY][prevX].getIcon());
+        squares[prevY][prevX].setIcon(null);
+
+        System.out.println("" + squares[prevY][prevX].getClientProperty("piece"));
+    }
+
 
     /**
      * pop up the confirm dialog for starting the game
