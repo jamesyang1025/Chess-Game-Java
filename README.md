@@ -1,3 +1,3 @@
 # Chess game Java
 
-Chess game
+See GUI_Manual_Test_Plan.pdf for more details
